@@ -11,6 +11,8 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppRouteImport } from './routes/_app'
 import { Route as AppIndexRouteImport } from './routes/_app.index'
+import { Route as AppInvoicesRouteImport } from './routes/_app.invoices'
+import { Route as AppGatewayRouteImport } from './routes/_app.gateway'
 import { Route as AppCrmRouteImport } from './routes/_app.crm'
 import { Route as AppAiSettingsRouteImport } from './routes/_app.ai-settings'
 
@@ -21,6 +23,16 @@ const AppRoute = AppRouteImport.update({
 const AppIndexRoute = AppIndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppInvoicesRoute = AppInvoicesRouteImport.update({
+  id: '/invoices',
+  path: '/invoices',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppGatewayRoute = AppGatewayRouteImport.update({
+  id: '/gateway',
+  path: '/gateway',
   getParentRoute: () => AppRoute,
 } as any)
 const AppCrmRoute = AppCrmRouteImport.update({
@@ -38,10 +50,14 @@ export interface FileRoutesByFullPath {
   '/': typeof AppIndexRoute
   '/ai-settings': typeof AppAiSettingsRoute
   '/crm': typeof AppCrmRoute
+  '/gateway': typeof AppGatewayRoute
+  '/invoices': typeof AppInvoicesRoute
 }
 export interface FileRoutesByTo {
   '/ai-settings': typeof AppAiSettingsRoute
   '/crm': typeof AppCrmRoute
+  '/gateway': typeof AppGatewayRoute
+  '/invoices': typeof AppInvoicesRoute
   '/': typeof AppIndexRoute
 }
 export interface FileRoutesById {
@@ -49,14 +65,23 @@ export interface FileRoutesById {
   '/_app': typeof AppRouteWithChildren
   '/_app/ai-settings': typeof AppAiSettingsRoute
   '/_app/crm': typeof AppCrmRoute
+  '/_app/gateway': typeof AppGatewayRoute
+  '/_app/invoices': typeof AppInvoicesRoute
   '/_app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/ai-settings' | '/crm'
+  fullPaths: '/' | '/ai-settings' | '/crm' | '/gateway' | '/invoices'
   fileRoutesByTo: FileRoutesByTo
-  to: '/ai-settings' | '/crm' | '/'
-  id: '__root__' | '/_app' | '/_app/ai-settings' | '/_app/crm' | '/_app/'
+  to: '/ai-settings' | '/crm' | '/gateway' | '/invoices' | '/'
+  id:
+    | '__root__'
+    | '/_app'
+    | '/_app/ai-settings'
+    | '/_app/crm'
+    | '/_app/gateway'
+    | '/_app/invoices'
+    | '/_app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -79,6 +104,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/invoices': {
+      id: '/_app/invoices'
+      path: '/invoices'
+      fullPath: '/invoices'
+      preLoaderRoute: typeof AppInvoicesRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/gateway': {
+      id: '/_app/gateway'
+      path: '/gateway'
+      fullPath: '/gateway'
+      preLoaderRoute: typeof AppGatewayRouteImport
+      parentRoute: typeof AppRoute
+    }
     '/_app/crm': {
       id: '/_app/crm'
       path: '/crm'
@@ -99,12 +138,16 @@ declare module '@tanstack/react-router' {
 interface AppRouteChildren {
   AppAiSettingsRoute: typeof AppAiSettingsRoute
   AppCrmRoute: typeof AppCrmRoute
+  AppGatewayRoute: typeof AppGatewayRoute
+  AppInvoicesRoute: typeof AppInvoicesRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppAiSettingsRoute: AppAiSettingsRoute,
   AppCrmRoute: AppCrmRoute,
+  AppGatewayRoute: AppGatewayRoute,
+  AppInvoicesRoute: AppInvoicesRoute,
   AppIndexRoute: AppIndexRoute,
 }
 
@@ -116,3 +159,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
