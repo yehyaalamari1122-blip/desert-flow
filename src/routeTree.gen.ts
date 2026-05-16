@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as AppRouteImport } from './routes/_app'
 import { Route as AppIndexRouteImport } from './routes/_app.index'
 import { Route as AppCrmRouteImport } from './routes/_app.crm'
+import { Route as AppAiSettingsRouteImport } from './routes/_app.ai-settings'
 
 const AppRoute = AppRouteImport.update({
   id: '/_app',
@@ -27,27 +28,35 @@ const AppCrmRoute = AppCrmRouteImport.update({
   path: '/crm',
   getParentRoute: () => AppRoute,
 } as any)
+const AppAiSettingsRoute = AppAiSettingsRouteImport.update({
+  id: '/ai-settings',
+  path: '/ai-settings',
+  getParentRoute: () => AppRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof AppIndexRoute
+  '/ai-settings': typeof AppAiSettingsRoute
   '/crm': typeof AppCrmRoute
 }
 export interface FileRoutesByTo {
+  '/ai-settings': typeof AppAiSettingsRoute
   '/crm': typeof AppCrmRoute
   '/': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_app': typeof AppRouteWithChildren
+  '/_app/ai-settings': typeof AppAiSettingsRoute
   '/_app/crm': typeof AppCrmRoute
   '/_app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/crm'
+  fullPaths: '/' | '/ai-settings' | '/crm'
   fileRoutesByTo: FileRoutesByTo
-  to: '/crm' | '/'
-  id: '__root__' | '/_app' | '/_app/crm' | '/_app/'
+  to: '/ai-settings' | '/crm' | '/'
+  id: '__root__' | '/_app' | '/_app/ai-settings' | '/_app/crm' | '/_app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -77,15 +86,24 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppCrmRouteImport
       parentRoute: typeof AppRoute
     }
+    '/_app/ai-settings': {
+      id: '/_app/ai-settings'
+      path: '/ai-settings'
+      fullPath: '/ai-settings'
+      preLoaderRoute: typeof AppAiSettingsRouteImport
+      parentRoute: typeof AppRoute
+    }
   }
 }
 
 interface AppRouteChildren {
+  AppAiSettingsRoute: typeof AppAiSettingsRoute
   AppCrmRoute: typeof AppCrmRoute
   AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
+  AppAiSettingsRoute: AppAiSettingsRoute,
   AppCrmRoute: AppCrmRoute,
   AppIndexRoute: AppIndexRoute,
 }
