@@ -74,20 +74,26 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Nexa — WhatsApp CRM & Sales Automation" },
+      { title: "whatsapp-saas" },
       {
         name: "description",
         content:
           "Premium WhatsApp CRM and AI sales automation for Arab and global e-commerce. Bot replies, CRM, invoices, analytics.",
       },
       { name: "author", content: "Nexa" },
-      { property: "og:title", content: "Nexa — WhatsApp CRM & Sales Automation" },
+      { property: "og:title", content: "whatsapp-saas" },
       {
         property: "og:description",
         content: "AI-powered WhatsApp CRM, automation, and invoicing for modern e-commerce.",
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "whatsapp-saas" },
+      { name: "description", content: "Arabian Sales Hub is a premium SaaS web application for WhatsApp CRM and sales automation." },
+      { property: "og:description", content: "Arabian Sales Hub is a premium SaaS web application for WhatsApp CRM and sales automation." },
+      { name: "twitter:description", content: "Arabian Sales Hub is a premium SaaS web application for WhatsApp CRM and sales automation." },
+      { property: "og:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/oQiTlk4McURkil1uesOPAOjenFt2/social-images/social-1778958758094-Screenshot_2026-05-16_221137.webp" },
+      { name: "twitter:image", content: "https://storage.googleapis.com/gpt-engineer-file-uploads/oQiTlk4McURkil1uesOPAOjenFt2/social-images/social-1778958758094-Screenshot_2026-05-16_221137.webp" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
