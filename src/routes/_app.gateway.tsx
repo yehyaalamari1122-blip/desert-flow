@@ -16,7 +16,7 @@ import { cn } from "@/lib/utils";
 import { toast } from "sonner";
 
 export const Route = createFileRoute("/_app/gateway")({
-  component: Gateway;
+  component: Gateway,
 });
 
 type ConnState = "idle" | "scanning" | "connected";
