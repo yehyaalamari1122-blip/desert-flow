@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as AppRouteImport } from './routes/_app'
 import { Route as AppIndexRouteImport } from './routes/_app.index'
 import { Route as AppInvoicesRouteImport } from './routes/_app.invoices'
@@ -16,6 +17,11 @@ import { Route as AppGatewayRouteImport } from './routes/_app.gateway'
 import { Route as AppCrmRouteImport } from './routes/_app.crm'
 import { Route as AppAiSettingsRouteImport } from './routes/_app.ai-settings'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AppRoute = AppRouteImport.update({
   id: '/_app',
   getParentRoute: () => rootRouteImport,
@@ -48,12 +54,14 @@ const AppAiSettingsRoute = AppAiSettingsRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof AppIndexRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ai-settings': typeof AppAiSettingsRoute
   '/crm': typeof AppCrmRoute
   '/gateway': typeof AppGatewayRoute
   '/invoices': typeof AppInvoicesRoute
 }
 export interface FileRoutesByTo {
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ai-settings': typeof AppAiSettingsRoute
   '/crm': typeof AppCrmRoute
   '/gateway': typeof AppGatewayRoute
@@ -63,6 +71,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_app': typeof AppRouteWithChildren
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_app/ai-settings': typeof AppAiSettingsRoute
   '/_app/crm': typeof AppCrmRoute
   '/_app/gateway': typeof AppGatewayRoute
@@ -71,12 +80,19 @@ export interface FileRoutesById {
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/ai-settings' | '/crm' | '/gateway' | '/invoices'
+  fullPaths:
+    | '/'
+    | '/sitemap.xml'
+    | '/ai-settings'
+    | '/crm'
+    | '/gateway'
+    | '/invoices'
   fileRoutesByTo: FileRoutesByTo
-  to: '/ai-settings' | '/crm' | '/gateway' | '/invoices' | '/'
+  to: '/sitemap.xml' | '/ai-settings' | '/crm' | '/gateway' | '/invoices' | '/'
   id:
     | '__root__'
     | '/_app'
+    | '/sitemap.xml'
     | '/_app/ai-settings'
     | '/_app/crm'
     | '/_app/gateway'
@@ -86,10 +102,18 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   AppRoute: typeof AppRouteWithChildren
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/_app': {
       id: '/_app'
       path: ''
@@ -155,7 +179,18 @@ const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
 
 const rootRouteChildren: RootRouteChildren = {
   AppRoute: AppRouteWithChildren,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
