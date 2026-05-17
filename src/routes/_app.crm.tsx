@@ -209,7 +209,7 @@ function CRM() {
               <Input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search by name or phone…"
+                placeholder="ابحث بالاسم أو رقم الهاتف…"
                 className="h-10 ps-9"
               />
             </div>
@@ -219,7 +219,7 @@ function CRM() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All statuses</SelectItem>
+                <SelectItem value="all">كل الحالات</SelectItem>
                 {Object.entries(STATUS_META).map(([k, m]) => (
                   <SelectItem key={k} value={k}>
                     {m.label}
@@ -228,7 +228,7 @@ function CRM() {
               </SelectContent>
             </Select>
             <Badge variant="secondary" className="h-10 px-3 text-xs">
-              {filtered.length} contacts
+              {filtered.length} جهة اتصال
             </Badge>
           </div>
         </Card>
@@ -237,11 +237,11 @@ function CRM() {
           <Table>
             <TableHeader>
               <TableRow className="bg-muted/40 hover:bg-muted/40">
-                <TableHead>Contact</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Last order</TableHead>
-                <TableHead className="text-end">Spent</TableHead>
-                <TableHead>Last seen</TableHead>
+                <TableHead>جهة الاتصال</TableHead>
+                <TableHead>الحالة</TableHead>
+                <TableHead>آخر طلب</TableHead>
+                <TableHead className="text-end">المبلغ</TableHead>
+                <TableHead>آخر ظهور</TableHead>
                 <TableHead className="w-12" />
               </TableRow>
             </TableHeader>
