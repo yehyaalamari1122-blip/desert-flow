@@ -254,7 +254,7 @@ function Invoices() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Notes</CardTitle>
+              <CardTitle className="text-base">ملاحظات</CardTitle>
             </CardHeader>
             <CardContent>
               <Textarea rows={3} value={notes} onChange={(e) => setNotes(e.target.value)} />
@@ -268,13 +268,13 @@ function Invoices() {
             <div className="bg-gradient-primary p-6 text-primary-foreground">
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="text-[11px] uppercase tracking-widest opacity-80">Invoice</div>
+                  <div className="text-[11px] uppercase tracking-widest opacity-80">فاتورة</div>
                   <div className="mt-1 font-mono text-2xl font-bold">{number}</div>
                 </div>
                 <div className="text-end">
                   <div className="text-sm font-semibold">{seller.name}</div>
                   <div className="text-[11px] opacity-90">{seller.address}</div>
-                  <div className="mt-1 text-[11px] opacity-90">VAT: {seller.vat}</div>
+                  <div className="mt-1 text-[11px] opacity-90">الرقم الضريبي: {seller.vat}</div>
                 </div>
               </div>
             </div>
@@ -283,7 +283,7 @@ function Invoices() {
               <div className="grid grid-cols-2 gap-4 text-xs">
                 <div>
                   <div className="mb-1 font-semibold uppercase tracking-wider text-slate-500">
-                    Bill to
+                    فاتورة إلى
                   </div>
                   <div className="font-semibold text-slate-900">{customer.name}</div>
                   <div className="text-slate-600">{customer.address}</div>
@@ -292,20 +292,20 @@ function Invoices() {
                 </div>
                 <div className="text-end">
                   <div className="mb-1 font-semibold uppercase tracking-wider text-slate-500">
-                    Dates
+                    التواريخ
                   </div>
-                  <div className="text-slate-700">Issued: {issueDate}</div>
-                  <div className="text-slate-700">Due: {dueDate}</div>
+                  <div className="text-slate-700">الإصدار: {issueDate}</div>
+                  <div className="text-slate-700">الاستحقاق: {dueDate}</div>
                 </div>
               </div>
 
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-slate-200 text-[11px] uppercase tracking-wider text-slate-500">
-                    <th className="py-2 text-start font-semibold">Description</th>
-                    <th className="py-2 text-end font-semibold">Qty</th>
-                    <th className="py-2 text-end font-semibold">Price</th>
-                    <th className="py-2 text-end font-semibold">Total</th>
+                    <th className="py-2 text-start font-semibold">الوصف</th>
+                    <th className="py-2 text-end font-semibold">الكمية</th>
+                    <th className="py-2 text-end font-semibold">السعر</th>
+                    <th className="py-2 text-end font-semibold">الإجمالي</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -326,19 +326,19 @@ function Invoices() {
 
               <div className="ms-auto w-full max-w-xs space-y-1.5 text-sm">
                 <div className="flex justify-between text-slate-600">
-                  <span>Subtotal</span>
+                  <span>المجموع الفرعي</span>
                   <span className="font-mono">
                     {symbol} {totals.subtotal.toFixed(2)}
                   </span>
                 </div>
                 <div className="flex justify-between text-slate-600">
-                  <span>VAT ({taxRate}%)</span>
+                  <span>ضريبة القيمة المضافة ({taxRate}%)</span>
                   <span className="font-mono">
                     {symbol} {totals.tax.toFixed(2)}
                   </span>
                 </div>
                 <div className="mt-2 flex justify-between border-t-2 border-slate-900 pt-2 text-base font-bold text-slate-900">
-                  <span>Total due</span>
+                  <span>الإجمالي المستحق</span>
                   <span className="font-mono">
                     {symbol} {totals.grand.toFixed(2)}
                   </span>
@@ -348,16 +348,16 @@ function Invoices() {
               {notes && (
                 <div className="rounded-lg bg-slate-50 p-3 text-xs leading-relaxed text-slate-600">
                   <div className="mb-1 font-semibold uppercase tracking-wider text-slate-500">
-                    Notes
+                    ملاحظات
                   </div>
                   {notes}
                 </div>
               )}
 
               <div className="flex items-center justify-between border-t border-slate-200 pt-4 text-[11px] text-slate-500">
-                <span>Generated by Nexa · WhatsApp CRM</span>
+                <span>تم إنشاؤها بواسطة نيكسا · واتساب CRM</span>
                 <Badge variant="outline" className="gap-1 border-emerald-200 text-emerald-700">
-                  <MessageCircle className="h-3 w-3" /> Sent via WhatsApp
+                  <MessageCircle className="h-3 w-3" /> أُرسلت عبر واتساب
                 </Badge>
               </div>
             </CardContent>
