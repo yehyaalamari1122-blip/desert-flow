@@ -149,14 +149,14 @@ function Analytics() {
           <Card className="lg:col-span-2">
             <CardHeader className="flex flex-row items-center justify-between">
               <div>
-                <CardTitle className="text-base font-semibold">Revenue this week</CardTitle>
+                <CardTitle className="text-base font-semibold">إيرادات هذا الأسبوع</CardTitle>
                 <p className="mt-0.5 text-xs text-muted-foreground">
-                  Daily revenue and order volume
+                  الإيرادات اليومية وحجم الطلبات
                 </p>
               </div>
               <Badge variant="secondary" className="rounded-full">
                 <span className="me-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
-                Live
+                مباشر
               </Badge>
             </CardHeader>
             <CardContent className="h-[280px]">
