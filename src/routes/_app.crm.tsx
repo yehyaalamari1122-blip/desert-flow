@@ -128,49 +128,49 @@ function CRM() {
         status: "new",
         lastOrder: "—",
         totalSpent: 0,
-        lastSeen: "just now",
-        tags: ["New"],
+        lastSeen: "الآن",
+        tags: ["جديد"],
         history: [],
       },
       ...cs,
     ]);
     setAddOpen(false);
     setDraft({ name: "", phone: "", country: "" });
-    toast.success("Contact added");
+    toast.success("تمت إضافة جهة الاتصال");
   }
 
   return (
     <div>
       <PageHeader
         icon={<Users className="h-5 w-5" />}
-        title="CRM Contacts"
-        description="Manage WhatsApp leads, follow-ups, and customer pipeline."
+        title="جهات اتصال العملاء"
+        description="إدارة العملاء المحتملين والمتابعات وقمع المبيعات عبر واتساب."
         actions={
           <Dialog open={addOpen} onOpenChange={setAddOpen}>
             <DialogTrigger asChild>
               <Button size="sm" className="bg-gradient-primary shadow-elegant">
-                <Plus className="me-1.5 h-4 w-4" /> Add contact
+                <Plus className="me-1.5 h-4 w-4" /> إضافة جهة اتصال
               </Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>New contact</DialogTitle>
+                <DialogTitle>جهة اتصال جديدة</DialogTitle>
                 <DialogDescription>
-                  Add a customer manually. New leads from WhatsApp are added automatically.
+                  أضف عميلًا يدويًا. العملاء الجدد من واتساب يُضافون تلقائيًا.
                 </DialogDescription>
               </DialogHeader>
               <div className="space-y-3 py-2">
                 <div className="space-y-1.5">
-                  <Label htmlFor="n">Full name</Label>
+                  <Label htmlFor="n">الاسم الكامل</Label>
                   <Input
                     id="n"
                     value={draft.name}
                     onChange={(e) => setDraft({ ...draft, name: e.target.value })}
-                    placeholder="Ahmed Hassan"
+                    placeholder="أحمد حسن"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <Label htmlFor="p">WhatsApp number</Label>
+                  <Label htmlFor="p">رقم واتساب</Label>
                   <Input
                     id="p"
                     value={draft.phone}
@@ -179,21 +179,21 @@ function CRM() {
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <Label htmlFor="c">Country</Label>
+                  <Label htmlFor="c">الدولة</Label>
                   <Input
                     id="c"
                     value={draft.country}
                     onChange={(e) => setDraft({ ...draft, country: e.target.value })}
-                    placeholder="Saudi Arabia"
+                    placeholder="السعودية"
                   />
                 </div>
               </div>
               <DialogFooter>
                 <Button variant="outline" onClick={() => setAddOpen(false)}>
-                  Cancel
+                  إلغاء
                 </Button>
                 <Button onClick={handleAdd} className="bg-gradient-primary">
-                  Create contact
+                  إنشاء جهة اتصال
                 </Button>
               </DialogFooter>
             </DialogContent>
