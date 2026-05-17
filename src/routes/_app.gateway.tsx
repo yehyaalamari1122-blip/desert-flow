@@ -122,7 +122,7 @@ function Gateway() {
                       <CheckCircle2 className="h-12 w-12 text-success" />
                     </div>
                     <Badge className="bg-success text-success-foreground hover:bg-success">
-                      Connected
+                      متصل
                     </Badge>
                   </div>
                 ) : (
