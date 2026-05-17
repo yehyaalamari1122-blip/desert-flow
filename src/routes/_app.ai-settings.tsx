@@ -122,7 +122,7 @@ function AISettings() {
                 </div>
               </div>
               <div className="space-y-1.5">
-                <Label>API key</Label>
+                <Label>مفتاح API</Label>
                 <div className="relative">
                   <Input
                     type={showKey ? "text" : "password"}
@@ -141,18 +141,18 @@ function AISettings() {
                 </div>
                 {apiKey && (
                   <Badge variant="secondary" className="mt-2 gap-1 text-success">
-                    <CheckCircle2 className="h-3 w-3" /> Key format looks valid
+                    <CheckCircle2 className="h-3 w-3" /> صيغة المفتاح تبدو صحيحة
                   </Badge>
                 )}
               </div>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <Label className="text-sm">
-                    Temperature{" "}
+                    درجة الحرارة{" "}
                     <span className="font-mono text-muted-foreground">{temperature[0]}</span>
                   </Label>
                   <span className="text-[11px] text-muted-foreground">
-                    Lower = focused · Higher = creative
+                    أقل = أكثر تركيزًا · أعلى = أكثر إبداعًا
                   </span>
                 </div>
                 <Slider
@@ -170,10 +170,10 @@ function AISettings() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
                 <Sparkles className="h-4 w-4 text-primary" />
-                System Prompt — AI persona
+                موجِّه النظام — شخصية الذكاء الاصطناعي
               </CardTitle>
               <CardDescription>
-                Tell the AI exactly how to behave, tone, what to sell, and edge cases.
+                وضِّح للذكاء الاصطناعي كيف يتصرّف، نبرة الحديث، ما الذي يبيعه، والحالات الخاصة.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
@@ -184,8 +184,8 @@ function AISettings() {
                 className="resize-none font-mono text-xs leading-relaxed"
               />
               <div className="flex justify-between text-[11px] text-muted-foreground">
-                <span>{prompt.length} characters</span>
-                <span>Recommended: 200-1,500 chars</span>
+                <span>{prompt.length} حرفًا</span>
+                <span>الموصى به: 200-1,500 حرف</span>
               </div>
             </CardContent>
           </Card>
@@ -197,9 +197,9 @@ function AISettings() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
                 <Zap className="h-4 w-4 text-primary" />
-                Automation toggles
+                مفاتيح الأتمتة
               </CardTitle>
-              <CardDescription>Control how aggressively the bot acts.</CardDescription>
+              <CardDescription>تحكَّم بمدى تلقائية ردود البوت.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-1">
               <ToggleRow
