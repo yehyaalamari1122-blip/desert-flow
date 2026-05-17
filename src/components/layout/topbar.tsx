@@ -27,17 +27,17 @@ import { LayoutDashboard, Users, Bot, QrCode, FileText } from "lucide-react";
 import { useEffect } from "react";
 
 const notifications = [
-  { id: 1, title: "New order from Ahmed Hassan", body: "Order #4592 — 1,250 SAR", time: "2m" },
-  { id: 2, title: "AI replied to 12 messages", body: "Auto-responder active", time: "14m" },
-  { id: 3, title: "Invoice #INV-203 sent", body: "Customer: Layla Mohamed", time: "1h" },
+  { id: 1, title: "طلب جديد من أحمد حسن", body: "الطلب رقم #4592 — 1,250 ر.س", time: "د 2" },
+  { id: 2, title: "ردّ الذكاء الاصطناعي على 12 رسالة", body: "الردّ التلقائي مُفعَّل", time: "د 14" },
+  { id: 3, title: "تم إرسال الفاتورة #INV-203", body: "العميل: ليلى محمد", time: "س 1" },
 ];
 
 const commands = [
-  { label: "Dashboard", to: "/", icon: LayoutDashboard },
-  { label: "CRM Contacts", to: "/crm", icon: Users },
-  { label: "Invoices", to: "/invoices", icon: FileText },
-  { label: "AI Auto-Responder", to: "/ai-settings", icon: Bot },
-  { label: "WhatsApp Gateway", to: "/gateway", icon: QrCode },
+  { label: "لوحة التحكم", to: "/", icon: LayoutDashboard },
+  { label: "جهات اتصال العملاء", to: "/crm", icon: Users },
+  { label: "الفواتير", to: "/invoices", icon: FileText },
+  { label: "الرد الآلي بالذكاء الاصطناعي", to: "/ai-settings", icon: Bot },
+  { label: "بوابة واتساب", to: "/gateway", icon: QrCode },
 ] as const;
 
 export function Topbar() {
