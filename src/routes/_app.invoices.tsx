@@ -104,30 +104,30 @@ function Invoices() {
     window.print();
   }
   function handleSendWhatsApp() {
-    toast.success("Invoice sent via WhatsApp", {
+    toast.success("تم إرسال الفاتورة عبر واتساب", {
       description: `${number} → ${customer.name} (${customer.phone})`,
     });
   }
   function handleDownload() {
-    toast.success("Generating PDF…", { description: "Your download will start shortly." });
+    toast.success("جارٍ إنشاء PDF…", { description: "سيبدأ التنزيل خلال لحظات." });
   }
 
   return (
     <div>
       <PageHeader
         icon={<FileText className="h-5 w-5" />}
-        title="Invoices"
-        description="Create, preview, and send VAT-ready invoices to your WhatsApp customers."
+        title="الفواتير"
+        description="أنشئ وعاين وأرسل فواتير جاهزة للضريبة لعملائك عبر واتساب."
         actions={
           <>
             <Button size="sm" variant="outline" onClick={handlePrint}>
-              <Printer className="me-1.5 h-4 w-4" /> Print
+              <Printer className="me-1.5 h-4 w-4" /> طباعة
             </Button>
             <Button size="sm" variant="outline" onClick={handleDownload}>
               <Download className="me-1.5 h-4 w-4" /> PDF
             </Button>
             <Button size="sm" onClick={handleSendWhatsApp} className="bg-gradient-primary shadow-elegant">
-              <Send className="me-1.5 h-4 w-4" /> Send via WhatsApp
+              <Send className="me-1.5 h-4 w-4" /> إرسال عبر واتساب
             </Button>
           </>
         }
@@ -138,16 +138,16 @@ function Invoices() {
         <div className="space-y-6 print:hidden">
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Invoice details</CardTitle>
-              <CardDescription>Metadata and currency.</CardDescription>
+              <CardTitle className="text-base">تفاصيل الفاتورة</CardTitle>
+              <CardDescription>البيانات الوصفية والعملة.</CardDescription>
             </CardHeader>
             <CardContent className="grid gap-3 sm:grid-cols-2">
               <div className="space-y-1.5">
-                <Label>Invoice #</Label>
+                <Label>رقم الفاتورة</Label>
                 <Input value={number} readOnly className="font-mono" />
               </div>
               <div className="space-y-1.5">
-                <Label>Currency</Label>
+                <Label>العملة</Label>
                 <Select value={currency} onValueChange={setCurrency}>
                   <SelectTrigger>
                     <SelectValue />
