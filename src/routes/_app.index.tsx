@@ -194,8 +194,8 @@ function Analytics() {
           {/* Channel share */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-base font-semibold">Channel mix</CardTitle>
-              <p className="text-xs text-muted-foreground">Where replies originate</p>
+              <CardTitle className="text-base font-semibold">توزيع القنوات</CardTitle>
+              <p className="text-xs text-muted-foreground">مصادر الردود</p>
             </CardHeader>
             <CardContent className="h-[280px]">
               <ResponsiveContainer width="100%" height="100%">
