@@ -104,17 +104,17 @@ function CRM() {
 
   function handleDelete(id: string) {
     setContacts((cs) => cs.filter((c) => c.id !== id));
-    toast.success("Contact deleted");
+    toast.success("تم حذف جهة الاتصال");
   }
 
   function handleStatusChange(id: string, status: ContactStatus) {
     setContacts((cs) => cs.map((c) => (c.id === id ? { ...c, status } : c)));
-    toast.success(`Status updated to ${STATUS_META[status].label}`);
+    toast.success(`تم تحديث الحالة إلى ${STATUS_META[status].label}`);
   }
 
   function handleAdd() {
     if (!draft.name || !draft.phone) {
-      toast.error("Name and phone are required");
+      toast.error("الاسم ورقم الهاتف مطلوبان");
       return;
     }
     const id = `c${Date.now()}`;
