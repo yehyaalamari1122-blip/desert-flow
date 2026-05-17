@@ -203,27 +203,27 @@ function AISettings() {
             </CardHeader>
             <CardContent className="space-y-1">
               <ToggleRow
-                label="Auto-Draft responses"
-                description="Generate replies for your agents to review and send."
+                label="صياغة الردود تلقائيًا"
+                description="ينشئ ردودًا لمراجعتها من الوكلاء قبل الإرسال."
                 checked={autoDraft}
                 onChange={setAutoDraft}
               />
               <ToggleRow
-                label="Direct auto-reply"
-                description="Send AI replies immediately, without human approval."
+                label="رد آلي مباشر"
+                description="إرسال ردود الذكاء الاصطناعي فورًا دون موافقة بشرية."
                 checked={autoReply}
                 onChange={setAutoReply}
                 accent
               />
               <ToggleRow
-                label="Automated follow-ups"
-                description="Re-engage stalled leads after 24h with a smart nudge."
+                label="متابعات تلقائية"
+                description="إعادة التواصل مع العملاء المتوقّفين بعد 24 ساعة برسالة ذكية."
                 checked={followUp}
                 onChange={setFollowUp}
               />
               <ToggleRow
-                label="Smart handoff to agent"
-                description="Detect frustration or complex queries and route to a human."
+                label="تحويل ذكي إلى وكيل"
+                description="كشف الانزعاج أو الأسئلة المعقّدة وتحويلها إلى وكيل بشري."
                 checked={handoff}
                 onChange={setHandoff}
               />
@@ -234,11 +234,11 @@ function AISettings() {
             <CardContent className="p-5">
               <div className="mb-2 flex items-center gap-2">
                 <Sparkles className="h-4 w-4 text-primary" />
-                <span className="text-sm font-semibold">Quality tip</span>
+                <span className="text-sm font-semibold">نصيحة للجودة</span>
               </div>
               <p className="text-xs leading-relaxed text-muted-foreground">
-                For Arabic-speaking customers, add 5-10 sample Q&A pairs in the prompt — it
-                improves dialect handling more than switching models.
+                للعملاء الناطقين بالعربية، أضف 5-10 أمثلة سؤال وجواب في الموجِّه — يحسّن
+                التعامل مع اللهجات أكثر من تغيير النموذج نفسه.
               </p>
             </CardContent>
           </Card>
