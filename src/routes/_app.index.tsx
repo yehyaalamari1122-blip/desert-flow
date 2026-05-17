@@ -275,15 +275,15 @@ function Analytics() {
               <div>
                 <CardTitle className="flex items-center gap-2 text-base font-semibold">
                   <Activity className="h-4 w-4 text-primary" />
-                  Live activity
+                  النشاط المباشر
                 </CardTitle>
                 <p className="mt-0.5 text-xs text-muted-foreground">
-                  Automated messages and completed sales
+                  الرسائل الآلية والمبيعات المُكتمَلة
                 </p>
               </div>
               <Badge className="rounded-full bg-success/15 text-success hover:bg-success/15">
                 <span className="me-1.5 h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
-                Streaming
+                مباشر
               </Badge>
             </CardHeader>
             <CardContent className="space-y-2">
