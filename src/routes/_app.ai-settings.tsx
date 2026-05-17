@@ -264,7 +264,7 @@ function ToggleRow({ label, description, checked, onChange, accent }: ToggleRowP
           <span className="text-sm font-medium text-foreground">{label}</span>
           {accent && checked && (
             <Badge className="bg-warning/20 text-warning-foreground hover:bg-warning/20">
-              Live
+              مباشر
             </Badge>
           )}
         </div>
