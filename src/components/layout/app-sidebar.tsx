@@ -24,11 +24,11 @@ import {
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { title: "Dashboard", url: "/", icon: LayoutDashboard, group: "Overview" },
-  { title: "CRM Contacts", url: "/crm", icon: Users, group: "Sales" },
-  { title: "Invoices", url: "/invoices", icon: FileText, group: "Sales" },
-  { title: "AI Auto-Responder", url: "/ai-settings", icon: Bot, group: "Automation" },
-  { title: "WhatsApp Gateway", url: "/gateway", icon: QrCode, group: "Automation" },
+  { title: "لوحة التحكم", url: "/", icon: LayoutDashboard, group: "نظرة عامة" },
+  { title: "جهات اتصال العملاء", url: "/crm", icon: Users, group: "المبيعات" },
+  { title: "الفواتير", url: "/invoices", icon: FileText, group: "المبيعات" },
+  { title: "الرد الآلي بالذكاء الاصطناعي", url: "/ai-settings", icon: Bot, group: "الأتمتة" },
+  { title: "بوابة واتساب", url: "/gateway", icon: QrCode, group: "الأتمتة" },
 ] as const;
 
 export function AppSidebar() {
