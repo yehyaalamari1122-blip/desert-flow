@@ -60,22 +60,22 @@ function Invoices() {
   const [taxRate, setTaxRate] = useState(15);
 
   const [customer, setCustomer] = useState({
-    name: "Ahmed Hassan",
+    name: "أحمد حسن",
     phone: "+966 50 123 4567",
     email: "ahmed@example.com",
-    address: "King Fahd Rd, Riyadh, Saudi Arabia",
+    address: "طريق الملك فهد، الرياض، المملكة العربية السعودية",
   });
   const [seller, setSeller] = useState({
-    name: "Nexa Commerce LLC",
+    name: "نيكسا للتجارة ذ.م.م",
     phone: "+966 11 555 7700",
-    address: "Olaya District, Riyadh, KSA",
+    address: "حي العليا، الرياض، السعودية",
     vat: "300123456700003",
   });
-  const [notes, setNotes] = useState("Thank you for shopping with us! Payment due within 7 days.");
+  const [notes, setNotes] = useState("شكرًا لتسوّقك معنا! الدفع مستحق خلال 7 أيام.");
 
   const [items, setItems] = useState<LineItem[]>([
-    { id: "1", description: "Premium leather wallet — cognac", quantity: 1, price: 320 },
-    { id: "2", description: "Embossing service", quantity: 1, price: 80 },
+    { id: "1", description: "محفظة جلدية فاخرة — لون كونياك", quantity: 1, price: 320 },
+    { id: "2", description: "خدمة الحفر والنقش", quantity: 1, price: 80 },
   ]);
 
   const symbol = CURRENCIES.find((c) => c.code === currency)?.symbol ?? "$";
