@@ -30,7 +30,7 @@ interface LogLine {
 function Gateway() {
   const [state, setState] = useState<ConnState>("idle");
   const [logs, setLogs] = useState<LogLine[]>([
-    { id: 1, time: timeNow(), level: "info", text: "Gateway ready. Awaiting QR scan." },
+    { id: 1, time: timeNow(), level: "info", text: "البوابة جاهزة. بانتظار مسح رمز QR." },
   ]);
   const idRef = useRef(2);
 
@@ -41,23 +41,23 @@ function Gateway() {
   function handleScan() {
     if (state !== "idle") return;
     setState("scanning");
-    pushLog("QR code scanned by mobile device…");
-    setTimeout(() => pushLog("Verifying device fingerprint…"), 600);
-    setTimeout(() => pushLog("Negotiating end-to-end keys…"), 1300);
-    setTimeout(() => pushLog("Session established (Noise XX handshake).", "ok"), 2000);
+    pushLog("تم مسح رمز QR بواسطة الجهاز المحمول…");
+    setTimeout(() => pushLog("جارٍ التحقق من بصمة الجهاز…"), 600);
+    setTimeout(() => pushLog("تفاوض المفاتيح التشفيرية بين الطرفين…"), 1300);
+    setTimeout(() => pushLog("تم إنشاء الجلسة (مصافحة Noise XX).", "ok"), 2000);
     setTimeout(() => {
       setState("connected");
-      pushLog("WhatsApp gateway CONNECTED · +966 50 ••• 4592", "ok");
-      pushLog("Subscribed to inbound messages, presence, receipts.");
-      toast.success("WhatsApp gateway connected", {
-        description: "Bot is now receiving messages.",
+      pushLog("بوابة واتساب متصلة · +966 50 ••• 4592", "ok");
+      pushLog("الاشتراك في الرسائل والإشعارات وإيصالات القراءة.");
+      toast.success("تم الاتصال ببوابة واتساب", {
+        description: "البوت يستقبل الرسائل الآن.",
       });
     }, 2600);
   }
 
   function handleDisconnect() {
     setState("idle");
-    pushLog("Session terminated by user.", "warn");
+    pushLog("تم إنهاء الجلسة بواسطة المستخدم.", "warn");
   }
 
   // simulate incoming after connect
