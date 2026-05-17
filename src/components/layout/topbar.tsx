@@ -102,7 +102,7 @@ export function Topbar() {
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button size="icon" variant="ghost" className="relative" aria-label="Notifications">
+            <Button size="icon" variant="ghost" className="relative" aria-label="الإشعارات">
               <Bell className="h-4 w-4" />
               <span className="absolute end-1.5 top-1.5 flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
@@ -112,9 +112,9 @@ export function Topbar() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-80">
             <DropdownMenuLabel className="flex items-center justify-between">
-              Notifications
+              الإشعارات
               <Badge variant="secondary" className="rounded-full">
-                {notifications.length} new
+                {notifications.length} جديد
               </Badge>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
@@ -140,10 +140,10 @@ export function Topbar() {
       </div>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Search pages, contacts, invoices…" />
+        <CommandInput placeholder="ابحث في الصفحات والعملاء والفواتير…" />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Navigation">
+          <CommandEmpty>لا توجد نتائج.</CommandEmpty>
+          <CommandGroup heading="التنقّل">
             {commands.map((c) => (
               <CommandItem
                 key={c.to}
