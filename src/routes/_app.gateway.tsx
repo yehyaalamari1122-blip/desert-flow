@@ -175,14 +175,14 @@ function Gateway() {
             <div>
               <CardTitle className="flex items-center gap-2 text-base">
                 <Terminal className="h-4 w-4 text-primary" />
-                Connection logs
+                سجلّ الاتصال
               </CardTitle>
-              <CardDescription>Realtime gateway events</CardDescription>
+              <CardDescription>أحداث البوابة الفورية</CardDescription>
             </div>
             {state === "connected" && (
               <Badge className="rounded-full bg-success/15 text-success hover:bg-success/15">
                 <span className="me-1.5 h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
-                Online
+                متصل الآن
               </Badge>
             )}
           </CardHeader>
