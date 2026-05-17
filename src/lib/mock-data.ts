@@ -165,13 +165,13 @@ export const MOCK_CONTACTS: Contact[] = [
 ];
 
 export const REVENUE_SERIES = [
-  { day: "Mon", revenue: 3200, orders: 14 },
-  { day: "Tue", revenue: 4100, orders: 18 },
-  { day: "Wed", revenue: 3850, orders: 17 },
-  { day: "Thu", revenue: 5200, orders: 22 },
-  { day: "Fri", revenue: 6400, orders: 29 },
-  { day: "Sat", revenue: 7100, orders: 33 },
-  { day: "Sun", revenue: 5980, orders: 27 },
+  { day: "الإثنين", revenue: 3200, orders: 14 },
+  { day: "الثلاثاء", revenue: 4100, orders: 18 },
+  { day: "الأربعاء", revenue: 3850, orders: 17 },
+  { day: "الخميس", revenue: 5200, orders: 22 },
+  { day: "الجمعة", revenue: 6400, orders: 29 },
+  { day: "السبت", revenue: 7100, orders: 33 },
+  { day: "الأحد", revenue: 5980, orders: 27 },
 ];
 
 export const CONVERSION_SERIES = [
@@ -184,16 +184,16 @@ export const CONVERSION_SERIES = [
 ];
 
 export const CHANNEL_SHARE = [
-  { name: "WhatsApp Bot", value: 64 },
-  { name: "Live Agent", value: 22 },
-  { name: "Web Chat", value: 14 },
+  { name: "بوت واتساب", value: 64 },
+  { name: "وكيل بشري", value: 22 },
+  { name: "دردشة الموقع", value: 14 },
 ];
 
 export const LIVE_FEED = [
-  { id: 1, type: "sale", text: "Khalid Rashid placed order ORD-4602 — 890 SAR", time: "now" },
-  { id: 2, type: "bot", text: "AI auto-replied to Sara Al-Otaibi (new lead)", time: "1m" },
-  { id: 3, type: "sale", text: "Ahmed Hassan paid invoice INV-203 — 1,250 SAR", time: "3m" },
-  { id: 4, type: "bot", text: "Bot qualified 4 new leads from Instagram", time: "8m" },
-  { id: 5, type: "sale", text: "Layla Mohamed added cart — 540 AED", time: "12m" },
-  { id: 6, type: "bot", text: "Auto follow-up sent to 12 follow_up contacts", time: "18m" },
+  { id: 1, type: "sale", text: "خالد راشد أنشأ الطلب ORD-4602 — 890 ر.س", time: "الآن" },
+  { id: 2, type: "bot", text: "ردّ الذكاء الاصطناعي تلقائيًا على سارة العتيبي (عميل جديد)", time: "د 1" },
+  { id: 3, type: "sale", text: "أحمد حسن دفع الفاتورة INV-203 — 1,250 ر.س", time: "د 3" },
+  { id: 4, type: "bot", text: "البوت أهّل 4 عملاء جدد من إنستغرام", time: "د 8" },
+  { id: 5, type: "sale", text: "ليلى محمد أضافت إلى السلة — 540 د.إ", time: "د 12" },
+  { id: 6, type: "bot", text: "تم إرسال متابعة تلقائية لـ 12 جهة اتصال", time: "د 18" },
 ] as const;
