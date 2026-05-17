@@ -38,11 +38,11 @@ export const Route = createFileRoute("/_app/ai-settings")({
   component: AISettings,
 });
 
-const DEFAULT_PROMPT = `You are Nexa, the friendly AI sales assistant for our e-commerce store.
-- Greet customers warmly and in their language (Arabic or English).
-- Answer product questions concisely. Use emojis sparingly.
-- If you don't know something, offer to connect them with a human agent.
-- Always close with a clear next step (add to cart, request callback, or schedule).`;
+const DEFAULT_PROMPT = `أنت "نيكسا"، المساعد الذكي اللطيف لمتجرنا الإلكتروني.
+- رحّب بالعملاء بدفء وبلغتهم (العربية أو الإنجليزية).
+- أجب عن أسئلة المنتجات باختصار. استخدم الإيموجي باعتدال.
+- إذا لم تعرف الإجابة، اعرض تحويلهم لوكيل بشري.
+- اختم دائمًا بخطوة واضحة (أضف إلى السلة، اطلب اتصالًا، أو حدّد موعدًا).`;
 
 function AISettings() {
   const [provider, setProvider] = useState("openai");
@@ -58,8 +58,8 @@ function AISettings() {
   const [handoff, setHandoff] = useState(true);
 
   function handleSave() {
-    toast.success("AI settings saved", {
-      description: `${provider} · ${model} · temp ${temperature[0]}`,
+    toast.success("تم حفظ إعدادات الذكاء الاصطناعي", {
+      description: `${provider} · ${model} · حرارة ${temperature[0]}`,
     });
   }
 
@@ -67,12 +67,12 @@ function AISettings() {
     <div>
       <PageHeader
         icon={<Bot className="h-5 w-5" />}
-        title="AI Auto-Responder"
-        description="Configure your LLM, persona, and automation rules."
+        title="الرد الآلي بالذكاء الاصطناعي"
+        description="اضبط نموذج اللغة، شخصية البوت، وقواعد الأتمتة."
         actions={
           <Button size="sm" onClick={handleSave} className="bg-gradient-primary shadow-elegant">
             <Save className="me-1.5 h-4 w-4" />
-            Save changes
+            حفظ التغييرات
           </Button>
         }
       />
