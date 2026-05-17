@@ -162,15 +162,15 @@ function Invoices() {
                 </Select>
               </div>
               <div className="space-y-1.5">
-                <Label>Issue date</Label>
+                <Label>تاريخ الإصدار</Label>
                 <Input type="date" value={issueDate} onChange={(e) => setIssueDate(e.target.value)} />
               </div>
               <div className="space-y-1.5">
-                <Label>Due date</Label>
+                <Label>تاريخ الاستحقاق</Label>
                 <Input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
               </div>
               <div className="space-y-1.5 sm:col-span-2">
-                <Label>VAT / Tax rate (%)</Label>
+                <Label>نسبة ضريبة القيمة المضافة (%)</Label>
                 <Input
                   type="number"
                   value={taxRate}
@@ -182,23 +182,23 @@ function Invoices() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Bill to</CardTitle>
+              <CardTitle className="text-base">فاتورة إلى</CardTitle>
             </CardHeader>
             <CardContent className="grid gap-3 sm:grid-cols-2">
               <div className="space-y-1.5">
-                <Label>Customer name</Label>
+                <Label>اسم العميل</Label>
                 <Input value={customer.name} onChange={(e) => setCustomer({ ...customer, name: e.target.value })} />
               </div>
               <div className="space-y-1.5">
-                <Label>WhatsApp number</Label>
+                <Label>رقم واتساب</Label>
                 <Input value={customer.phone} onChange={(e) => setCustomer({ ...customer, phone: e.target.value })} />
               </div>
               <div className="space-y-1.5 sm:col-span-2">
-                <Label>Email</Label>
+                <Label>البريد الإلكتروني</Label>
                 <Input value={customer.email} onChange={(e) => setCustomer({ ...customer, email: e.target.value })} />
               </div>
               <div className="space-y-1.5 sm:col-span-2">
-                <Label>Billing address</Label>
+                <Label>عنوان الفوترة</Label>
                 <Textarea
                   rows={2}
                   value={customer.address}
@@ -210,9 +210,9 @@ function Invoices() {
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-base">Line items</CardTitle>
+              <CardTitle className="text-base">عناصر الفاتورة</CardTitle>
               <Button size="sm" variant="outline" onClick={addItem}>
-                <Plus className="me-1.5 h-4 w-4" /> Add item
+                <Plus className="me-1.5 h-4 w-4" /> إضافة عنصر
               </Button>
             </CardHeader>
             <CardContent className="space-y-2">
@@ -222,7 +222,7 @@ function Invoices() {
                   className="grid grid-cols-[1fr_70px_90px_36px] items-center gap-2 rounded-lg border border-border bg-muted/20 p-2"
                 >
                   <Input
-                    placeholder="Description"
+                    placeholder="الوصف"
                     value={it.description}
                     onChange={(e) => updateItem(it.id, { description: e.target.value })}
                     className="h-9 border-none bg-transparent shadow-none focus-visible:ring-1"
