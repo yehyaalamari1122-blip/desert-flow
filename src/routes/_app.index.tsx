@@ -246,8 +246,8 @@ function Analytics() {
           {/* Conversion */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-base font-semibold">Conversion rate by hour</CardTitle>
-              <p className="text-xs text-muted-foreground">Peak conversion window: 8-10 PM</p>
+              <CardTitle className="text-base font-semibold">معدّل التحويل بالساعة</CardTitle>
+              <p className="text-xs text-muted-foreground">ذروة التحويل: 8 - 10 مساءً</p>
             </CardHeader>
             <CardContent className="h-[240px]">
               <ResponsiveContainer width="100%" height="100%">
