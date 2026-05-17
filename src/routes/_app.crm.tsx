@@ -352,17 +352,17 @@ function CRM() {
                     <div className="text-lg font-bold text-foreground">
                       ${selected.totalSpent}
                     </div>
-                    <div className="text-[10px] uppercase text-muted-foreground">Spent</div>
+                    <div className="text-[10px] uppercase text-muted-foreground">المبلغ</div>
                   </div>
                   <div className="rounded-lg bg-muted/50 p-3 text-center">
                     <div className="text-lg font-bold text-foreground">
                       {selected.history.length}
                     </div>
-                    <div className="text-[10px] uppercase text-muted-foreground">Messages</div>
+                    <div className="text-[10px] uppercase text-muted-foreground">الرسائل</div>
                   </div>
                   <div className="rounded-lg bg-muted/50 p-3 text-center">
                     <StatusBadge status={selected.status} />
-                    <div className="mt-1 text-[10px] uppercase text-muted-foreground">Status</div>
+                    <div className="mt-1 text-[10px] uppercase text-muted-foreground">الحالة</div>
                   </div>
                 </div>
 
@@ -378,13 +378,13 @@ function CRM() {
                   <div className="mb-2 flex items-center justify-between">
                     <h4 className="flex items-center gap-1.5 text-sm font-semibold">
                       <MessageCircle className="h-4 w-4 text-primary" />
-                      Recent chat
+                      المحادثة الأخيرة
                     </h4>
                   </div>
                   <div className="space-y-2 rounded-xl border border-border bg-muted/30 p-3">
                     {selected.history.length === 0 && (
                       <p className="py-6 text-center text-xs text-muted-foreground">
-                        No messages yet.
+                        لا توجد رسائل بعد.
                       </p>
                     )}
                     {selected.history.map((m) => (
@@ -406,7 +406,7 @@ function CRM() {
                           )}
                         >
                           <p>{m.text}</p>
-                          <div className="mt-1 text-[9px] opacity-70">{m.time} · {m.from}</div>
+                          <div className="mt-1 text-[9px] opacity-70">{m.time} · {m.from === "customer" ? "العميل" : m.from === "bot" ? "البوت" : "الوكيل"}</div>
                         </div>
                       </div>
                     ))}
@@ -414,7 +414,7 @@ function CRM() {
                 </div>
 
                 <div className="flex items-center gap-2 border-t border-border pt-3">
-                  <Input placeholder="Type a reply…" className="h-10" />
+                  <Input placeholder="اكتب ردًا…" className="h-10" />
                   <Button size="icon" className="h-10 w-10 bg-gradient-primary">
                     <Send className="h-4 w-4" />
                   </Button>
