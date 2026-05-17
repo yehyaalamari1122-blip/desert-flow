@@ -10,7 +10,7 @@
  */
 
 @theme inline {
-  --font-sans: "Inter", "Cairo", system-ui, sans-serif;
+  --font-sans: "Cairo", "Inter", system-ui, sans-serif;
   --font-display: "Cairo", "Inter", system-ui, sans-serif;
 
   --radius-sm: calc(var(--radius) - 4px);
