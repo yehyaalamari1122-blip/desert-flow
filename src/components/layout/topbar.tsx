@@ -67,7 +67,7 @@ export function Topbar() {
         className="group hidden h-9 min-w-[280px] items-center gap-2 rounded-lg border border-border bg-muted/40 px-3 text-sm text-muted-foreground transition-colors hover:bg-muted md:flex"
       >
         <Search className="h-4 w-4" />
-        <span>Search contacts, orders, invoices…</span>
+        <span>ابحث في العملاء، الطلبات، الفواتير…</span>
         <kbd className="ms-auto inline-flex items-center gap-1 rounded border border-border bg-background px-1.5 py-0.5 text-[10px] font-medium">
           <Command className="h-3 w-3" />K
         </kbd>
@@ -77,7 +77,7 @@ export function Topbar() {
         variant="ghost"
         className="md:hidden"
         onClick={() => setOpen(true)}
-        aria-label="Search"
+        aria-label="بحث"
       >
         <Search className="h-4 w-4" />
       </Button>
