@@ -132,7 +132,7 @@ function Gateway() {
                       <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-2xl bg-background/85 backdrop-blur-sm">
                         <Loader2 className="h-8 w-8 animate-spin text-primary" />
                         <span className="text-xs font-medium text-foreground">
-                          Establishing secure session…
+                          جارٍ إنشاء جلسة آمنة…
                         </span>
                       </div>
                     )}
@@ -147,22 +147,22 @@ function Gateway() {
             {state === "idle" && (
               <Button onClick={handleScan} className="w-full bg-gradient-primary shadow-elegant">
                 <Smartphone className="me-2 h-4 w-4" />
-                Simulate QR scan
+                محاكاة مسح QR
               </Button>
             )}
             {state === "scanning" && (
               <Button disabled className="w-full">
-                <Loader2 className="me-2 h-4 w-4 animate-spin" /> Connecting…
+                <Loader2 className="me-2 h-4 w-4 animate-spin" /> جارٍ الاتصال…
               </Button>
             )}
             {state === "connected" && (
               <Button variant="outline" onClick={handleDisconnect} className="w-full">
-                <RefreshCw className="me-2 h-4 w-4" /> Reset session
+                <RefreshCw className="me-2 h-4 w-4" /> إعادة تعيين الجلسة
               </Button>
             )}
 
             <p className="text-center text-[11px] text-muted-foreground">
-              End-to-end encrypted · Session expires after 7 days of inactivity
+              مشفَّر طرفًا إلى طرف · تنتهي الجلسة بعد 7 أيام من عدم النشاط
             </p>
 
             <style>{`@keyframes scan { 0%, 100% { transform: translateY(0); opacity: 0.3 } 50% { transform: translateY(15rem); opacity: 1 } }`}</style>
