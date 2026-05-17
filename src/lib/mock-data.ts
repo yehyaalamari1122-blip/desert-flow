@@ -32,11 +32,11 @@ export const STATUS_META: Record<
   ContactStatus,
   { label: string; tone: "info" | "warning" | "success" | "destructive" | "muted" }
 > = {
-  new: { label: "New", tone: "info" },
-  interested: { label: "Interested", tone: "warning" },
-  follow_up: { label: "Follow-up", tone: "muted" },
-  shipped: { label: "Shipped", tone: "success" },
-  cancelled: { label: "Cancelled", tone: "destructive" },
+  new: { label: "جديد", tone: "info" },
+  interested: { label: "مهتم", tone: "warning" },
+  follow_up: { label: "متابعة", tone: "muted" },
+  shipped: { label: "تم الشحن", tone: "success" },
+  cancelled: { label: "ملغى", tone: "destructive" },
 };
 
 export const MOCK_CONTACTS: Contact[] = [
