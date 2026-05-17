@@ -84,16 +84,16 @@ function AISettings() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
                 <Key className="h-4 w-4 text-primary" />
-                LLM Provider & API key
+                مزوّد LLM ومفتاح API
               </CardTitle>
               <CardDescription>
-                Your key is stored encrypted and never sent to third parties.
+                مفتاحك مخزَّن مشفَّرًا ولن يُرسَل لأي طرف ثالث.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-1.5">
-                  <Label>Provider</Label>
+                  <Label>المزوّد</Label>
                   <Select value={provider} onValueChange={setProvider}>
                     <SelectTrigger>
                       <SelectValue />
@@ -107,7 +107,7 @@ function AISettings() {
                   </Select>
                 </div>
                 <div className="space-y-1.5">
-                  <Label>Model</Label>
+                  <Label>النموذج</Label>
                   <Select value={model} onValueChange={setModel}>
                     <SelectTrigger>
                       <SelectValue />
