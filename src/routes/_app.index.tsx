@@ -87,7 +87,7 @@ function KpiCard({ label, value, delta, icon, tint }: KpiProps) {
             {Math.abs(delta)}%
           </span>
         </div>
-        <p className="mt-1 text-[11px] text-muted-foreground">vs. last week</p>
+        <p className="mt-1 text-[11px] text-muted-foreground">مقارنةً بالأسبوع الماضي</p>
       </CardContent>
     </Card>
   );
@@ -98,15 +98,15 @@ function Analytics() {
     <div>
       <PageHeader
         icon={<LayoutDashboard className="h-5 w-5" />}
-        title="Dashboard"
-        description="Realtime overview of WhatsApp sales, AI replies, and pipeline health."
+        title="لوحة التحكم"
+        description="نظرة فورية على مبيعات واتساب وردود الذكاء الاصطناعي وصحّة قنوات البيع."
         actions={
           <>
             <Button variant="outline" size="sm">
-              Last 7 days
+              آخر 7 أيام
             </Button>
             <Button size="sm" className="bg-gradient-primary shadow-elegant">
-              Export report
+              تصدير التقرير
             </Button>
           </>
         }
@@ -115,28 +115,28 @@ function Analytics() {
       <div className="space-y-6 p-6">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <KpiCard
-            label="Daily Revenue"
-            value="$6,420"
+            label="الإيرادات اليومية"
+            value="6,420 $"
             delta={12.4}
             tint="primary"
             icon={<DollarSign className="h-4 w-4 text-primary" />}
           />
           <KpiCard
-            label="Total Orders"
+            label="إجمالي الطلبات"
             value="184"
             delta={8.1}
             tint="info"
             icon={<ShoppingCart className="h-4 w-4 text-info" />}
           />
           <KpiCard
-            label="Active Bot Chats"
+            label="محادثات البوت النشطة"
             value="92"
             delta={24.6}
             tint="warning"
             icon={<MessageSquare className="h-4 w-4 text-warning" />}
           />
           <KpiCard
-            label="Conversion Rate"
+            label="معدّل التحويل"
             value="6.8%"
             delta={-1.2}
             tint="success"
@@ -149,14 +149,14 @@ function Analytics() {
           <Card className="lg:col-span-2">
             <CardHeader className="flex flex-row items-center justify-between">
               <div>
-                <CardTitle className="text-base font-semibold">Revenue this week</CardTitle>
+                <CardTitle className="text-base font-semibold">إيرادات هذا الأسبوع</CardTitle>
                 <p className="mt-0.5 text-xs text-muted-foreground">
-                  Daily revenue and order volume
+                  الإيرادات اليومية وحجم الطلبات
                 </p>
               </div>
               <Badge variant="secondary" className="rounded-full">
                 <span className="me-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
-                Live
+                مباشر
               </Badge>
             </CardHeader>
             <CardContent className="h-[280px]">
@@ -194,8 +194,8 @@ function Analytics() {
           {/* Channel share */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-base font-semibold">Channel mix</CardTitle>
-              <p className="text-xs text-muted-foreground">Where replies originate</p>
+              <CardTitle className="text-base font-semibold">توزيع القنوات</CardTitle>
+              <p className="text-xs text-muted-foreground">مصادر الردود</p>
             </CardHeader>
             <CardContent className="h-[280px]">
               <ResponsiveContainer width="100%" height="100%">
@@ -246,8 +246,8 @@ function Analytics() {
           {/* Conversion */}
           <Card>
             <CardHeader>
-              <CardTitle className="text-base font-semibold">Conversion rate by hour</CardTitle>
-              <p className="text-xs text-muted-foreground">Peak conversion window: 8-10 PM</p>
+              <CardTitle className="text-base font-semibold">معدّل التحويل بالساعة</CardTitle>
+              <p className="text-xs text-muted-foreground">ذروة التحويل: 8 - 10 مساءً</p>
             </CardHeader>
             <CardContent className="h-[240px]">
               <ResponsiveContainer width="100%" height="100%">
@@ -275,15 +275,15 @@ function Analytics() {
               <div>
                 <CardTitle className="flex items-center gap-2 text-base font-semibold">
                   <Activity className="h-4 w-4 text-primary" />
-                  Live activity
+                  النشاط المباشر
                 </CardTitle>
                 <p className="mt-0.5 text-xs text-muted-foreground">
-                  Automated messages and completed sales
+                  الرسائل الآلية والمبيعات المُكتمَلة
                 </p>
               </div>
               <Badge className="rounded-full bg-success/15 text-success hover:bg-success/15">
                 <span className="me-1.5 h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
-                Streaming
+                مباشر
               </Badge>
             </CardHeader>
             <CardContent className="space-y-2">

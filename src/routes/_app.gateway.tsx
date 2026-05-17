@@ -30,7 +30,7 @@ interface LogLine {
 function Gateway() {
   const [state, setState] = useState<ConnState>("idle");
   const [logs, setLogs] = useState<LogLine[]>([
-    { id: 1, time: timeNow(), level: "info", text: "Gateway ready. Awaiting QR scan." },
+    { id: 1, time: timeNow(), level: "info", text: "البوابة جاهزة. بانتظار مسح رمز QR." },
   ]);
   const idRef = useRef(2);
 
@@ -41,34 +41,34 @@ function Gateway() {
   function handleScan() {
     if (state !== "idle") return;
     setState("scanning");
-    pushLog("QR code scanned by mobile device…");
-    setTimeout(() => pushLog("Verifying device fingerprint…"), 600);
-    setTimeout(() => pushLog("Negotiating end-to-end keys…"), 1300);
-    setTimeout(() => pushLog("Session established (Noise XX handshake).", "ok"), 2000);
+    pushLog("تم مسح رمز QR بواسطة الجهاز المحمول…");
+    setTimeout(() => pushLog("جارٍ التحقق من بصمة الجهاز…"), 600);
+    setTimeout(() => pushLog("تفاوض المفاتيح التشفيرية بين الطرفين…"), 1300);
+    setTimeout(() => pushLog("تم إنشاء الجلسة (مصافحة Noise XX).", "ok"), 2000);
     setTimeout(() => {
       setState("connected");
-      pushLog("WhatsApp gateway CONNECTED · +966 50 ••• 4592", "ok");
-      pushLog("Subscribed to inbound messages, presence, receipts.");
-      toast.success("WhatsApp gateway connected", {
-        description: "Bot is now receiving messages.",
+      pushLog("بوابة واتساب متصلة · +966 50 ••• 4592", "ok");
+      pushLog("الاشتراك في الرسائل والإشعارات وإيصالات القراءة.");
+      toast.success("تم الاتصال ببوابة واتساب", {
+        description: "البوت يستقبل الرسائل الآن.",
       });
     }, 2600);
   }
 
   function handleDisconnect() {
     setState("idle");
-    pushLog("Session terminated by user.", "warn");
+    pushLog("تم إنهاء الجلسة بواسطة المستخدم.", "warn");
   }
 
   // simulate incoming after connect
   useEffect(() => {
     if (state !== "connected") return;
     const events = [
-      "Inbound message from +971 55 ••• 6543",
-      "Bot auto-reply dispatched (latency 412ms)",
-      "Heartbeat OK · uptime 00:00:42",
-      "Inbound message from +20 100 ••• 7788",
-      "Bot drafted reply for human review",
+      "رسالة واردة من +971 55 ••• 6543",
+      "تم إرسال ردّ تلقائي من البوت (زمن الاستجابة 412 مللي ثانية)",
+      "نبضة سليمة · وقت التشغيل 00:00:42",
+      "رسالة واردة من +20 100 ••• 7788",
+      "صاغ البوت ردًا لمراجعة بشرية",
     ];
     let i = 0;
     const t = setInterval(() => {
@@ -82,17 +82,17 @@ function Gateway() {
     <div>
       <PageHeader
         icon={<QrCode className="h-5 w-5" />}
-        title="WhatsApp Gateway"
-        description="Connect your WhatsApp Business number via secure QR pairing."
+        title="بوابة واتساب"
+        description="اربط رقم واتساب الأعمال عبر إقران آمن برمز QR."
         actions={
           state === "connected" ? (
             <Button size="sm" variant="outline" onClick={handleDisconnect}>
-              <Power className="me-1.5 h-4 w-4" /> Disconnect
+              <Power className="me-1.5 h-4 w-4" /> قطع الاتصال
             </Button>
           ) : (
             <Badge variant="secondary" className="h-9 rounded-full px-3 text-xs">
               <span className="me-1.5 h-1.5 w-1.5 rounded-full bg-muted-foreground" />
-              Not connected
+              غير متصل
             </Badge>
           )
         }
@@ -102,9 +102,9 @@ function Gateway() {
         {/* QR card */}
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle className="text-base">Pair your phone</CardTitle>
+            <CardTitle className="text-base">اربط هاتفك</CardTitle>
             <CardDescription>
-              Open WhatsApp → Settings → Linked Devices → Link a device.
+              افتح واتساب ← الإعدادات ← الأجهزة المرتبطة ← ربط جهاز.
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center gap-4">
@@ -122,7 +122,7 @@ function Gateway() {
                       <CheckCircle2 className="h-12 w-12 text-success" />
                     </div>
                     <Badge className="bg-success text-success-foreground hover:bg-success">
-                      Connected
+                      متصل
                     </Badge>
                   </div>
                 ) : (
@@ -132,7 +132,7 @@ function Gateway() {
                       <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 rounded-2xl bg-background/85 backdrop-blur-sm">
                         <Loader2 className="h-8 w-8 animate-spin text-primary" />
                         <span className="text-xs font-medium text-foreground">
-                          Establishing secure session…
+                          جارٍ إنشاء جلسة آمنة…
                         </span>
                       </div>
                     )}
@@ -147,22 +147,22 @@ function Gateway() {
             {state === "idle" && (
               <Button onClick={handleScan} className="w-full bg-gradient-primary shadow-elegant">
                 <Smartphone className="me-2 h-4 w-4" />
-                Simulate QR scan
+                محاكاة مسح QR
               </Button>
             )}
             {state === "scanning" && (
               <Button disabled className="w-full">
-                <Loader2 className="me-2 h-4 w-4 animate-spin" /> Connecting…
+                <Loader2 className="me-2 h-4 w-4 animate-spin" /> جارٍ الاتصال…
               </Button>
             )}
             {state === "connected" && (
               <Button variant="outline" onClick={handleDisconnect} className="w-full">
-                <RefreshCw className="me-2 h-4 w-4" /> Reset session
+                <RefreshCw className="me-2 h-4 w-4" /> إعادة تعيين الجلسة
               </Button>
             )}
 
             <p className="text-center text-[11px] text-muted-foreground">
-              End-to-end encrypted · Session expires after 7 days of inactivity
+              مشفَّر طرفًا إلى طرف · تنتهي الجلسة بعد 7 أيام من عدم النشاط
             </p>
 
             <style>{`@keyframes scan { 0%, 100% { transform: translateY(0); opacity: 0.3 } 50% { transform: translateY(15rem); opacity: 1 } }`}</style>
@@ -175,14 +175,14 @@ function Gateway() {
             <div>
               <CardTitle className="flex items-center gap-2 text-base">
                 <Terminal className="h-4 w-4 text-primary" />
-                Connection logs
+                سجلّ الاتصال
               </CardTitle>
-              <CardDescription>Realtime gateway events</CardDescription>
+              <CardDescription>أحداث البوابة الفورية</CardDescription>
             </div>
             {state === "connected" && (
               <Badge className="rounded-full bg-success/15 text-success hover:bg-success/15">
                 <span className="me-1.5 h-1.5 w-1.5 animate-pulse rounded-full bg-success" />
-                Online
+                متصل الآن
               </Badge>
             )}
           </CardHeader>

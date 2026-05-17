@@ -24,11 +24,11 @@ import {
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { title: "Dashboard", url: "/", icon: LayoutDashboard, group: "Overview" },
-  { title: "CRM Contacts", url: "/crm", icon: Users, group: "Sales" },
-  { title: "Invoices", url: "/invoices", icon: FileText, group: "Sales" },
-  { title: "AI Auto-Responder", url: "/ai-settings", icon: Bot, group: "Automation" },
-  { title: "WhatsApp Gateway", url: "/gateway", icon: QrCode, group: "Automation" },
+  { title: "لوحة التحكم", url: "/", icon: LayoutDashboard, group: "نظرة عامة" },
+  { title: "جهات اتصال العملاء", url: "/crm", icon: Users, group: "المبيعات" },
+  { title: "الفواتير", url: "/invoices", icon: FileText, group: "المبيعات" },
+  { title: "الرد الآلي بالذكاء الاصطناعي", url: "/ai-settings", icon: Bot, group: "الأتمتة" },
+  { title: "بوابة واتساب", url: "/gateway", icon: QrCode, group: "الأتمتة" },
 ] as const;
 
 export function AppSidebar() {
@@ -51,10 +51,10 @@ export function AppSidebar() {
           {!collapsed && (
             <div className="flex flex-col leading-none">
               <span className="text-base font-bold tracking-tight text-sidebar-foreground">
-                Nexa
+                نيكسا
               </span>
               <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-                WhatsApp CRM
+                واتساب CRM
               </span>
             </div>
           )}
@@ -112,9 +112,9 @@ export function AppSidebar() {
           <div className="rounded-xl bg-gradient-primary p-3 text-primary-foreground shadow-elegant">
             <div className="flex items-center gap-2">
               <Sparkles className="h-4 w-4" />
-              <span className="text-xs font-semibold">Pro plan</span>
+              <span className="text-xs font-semibold">الباقة الاحترافية</span>
             </div>
-            <p className="mt-1 text-[11px] opacity-90">2,481 / 5,000 AI replies used</p>
+            <p className="mt-1 text-[11px] opacity-90">2,481 / 5,000 رد ذكاء اصطناعي مُستخدم</p>
             <div className="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-primary-foreground/20">
               <div className="h-full w-[49%] rounded-full bg-primary-foreground" />
             </div>

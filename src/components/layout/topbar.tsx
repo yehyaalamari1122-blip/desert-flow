@@ -27,17 +27,17 @@ import { LayoutDashboard, Users, Bot, QrCode, FileText } from "lucide-react";
 import { useEffect } from "react";
 
 const notifications = [
-  { id: 1, title: "New order from Ahmed Hassan", body: "Order #4592 — 1,250 SAR", time: "2m" },
-  { id: 2, title: "AI replied to 12 messages", body: "Auto-responder active", time: "14m" },
-  { id: 3, title: "Invoice #INV-203 sent", body: "Customer: Layla Mohamed", time: "1h" },
+  { id: 1, title: "طلب جديد من أحمد حسن", body: "الطلب رقم #4592 — 1,250 ر.س", time: "د 2" },
+  { id: 2, title: "ردّ الذكاء الاصطناعي على 12 رسالة", body: "الردّ التلقائي مُفعَّل", time: "د 14" },
+  { id: 3, title: "تم إرسال الفاتورة #INV-203", body: "العميل: ليلى محمد", time: "س 1" },
 ];
 
 const commands = [
-  { label: "Dashboard", to: "/", icon: LayoutDashboard },
-  { label: "CRM Contacts", to: "/crm", icon: Users },
-  { label: "Invoices", to: "/invoices", icon: FileText },
-  { label: "AI Auto-Responder", to: "/ai-settings", icon: Bot },
-  { label: "WhatsApp Gateway", to: "/gateway", icon: QrCode },
+  { label: "لوحة التحكم", to: "/", icon: LayoutDashboard },
+  { label: "جهات اتصال العملاء", to: "/crm", icon: Users },
+  { label: "الفواتير", to: "/invoices", icon: FileText },
+  { label: "الرد الآلي بالذكاء الاصطناعي", to: "/ai-settings", icon: Bot },
+  { label: "بوابة واتساب", to: "/gateway", icon: QrCode },
 ] as const;
 
 export function Topbar() {
@@ -67,7 +67,7 @@ export function Topbar() {
         className="group hidden h-9 min-w-[280px] items-center gap-2 rounded-lg border border-border bg-muted/40 px-3 text-sm text-muted-foreground transition-colors hover:bg-muted md:flex"
       >
         <Search className="h-4 w-4" />
-        <span>Search contacts, orders, invoices…</span>
+        <span>ابحث في العملاء، الطلبات، الفواتير…</span>
         <kbd className="ms-auto inline-flex items-center gap-1 rounded border border-border bg-background px-1.5 py-0.5 text-[10px] font-medium">
           <Command className="h-3 w-3" />K
         </kbd>
@@ -77,7 +77,7 @@ export function Topbar() {
         variant="ghost"
         className="md:hidden"
         onClick={() => setOpen(true)}
-        aria-label="Search"
+        aria-label="بحث"
       >
         <Search className="h-4 w-4" />
       </Button>
@@ -102,7 +102,7 @@ export function Topbar() {
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
-            <Button size="icon" variant="ghost" className="relative" aria-label="Notifications">
+            <Button size="icon" variant="ghost" className="relative" aria-label="الإشعارات">
               <Bell className="h-4 w-4" />
               <span className="absolute end-1.5 top-1.5 flex h-2 w-2">
                 <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
@@ -112,9 +112,9 @@ export function Topbar() {
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end" className="w-80">
             <DropdownMenuLabel className="flex items-center justify-between">
-              Notifications
+              الإشعارات
               <Badge variant="secondary" className="rounded-full">
-                {notifications.length} new
+                {notifications.length} جديد
               </Badge>
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
@@ -140,10 +140,10 @@ export function Topbar() {
       </div>
 
       <CommandDialog open={open} onOpenChange={setOpen}>
-        <CommandInput placeholder="Search pages, contacts, invoices…" />
+        <CommandInput placeholder="ابحث في الصفحات والعملاء والفواتير…" />
         <CommandList>
-          <CommandEmpty>No results found.</CommandEmpty>
-          <CommandGroup heading="Navigation">
+          <CommandEmpty>لا توجد نتائج.</CommandEmpty>
+          <CommandGroup heading="التنقّل">
             {commands.map((c) => (
               <CommandItem
                 key={c.to}

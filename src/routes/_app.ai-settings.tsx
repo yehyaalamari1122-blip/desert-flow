@@ -38,11 +38,11 @@ export const Route = createFileRoute("/_app/ai-settings")({
   component: AISettings,
 });
 
-const DEFAULT_PROMPT = `You are Nexa, the friendly AI sales assistant for our e-commerce store.
-- Greet customers warmly and in their language (Arabic or English).
-- Answer product questions concisely. Use emojis sparingly.
-- If you don't know something, offer to connect them with a human agent.
-- Always close with a clear next step (add to cart, request callback, or schedule).`;
+const DEFAULT_PROMPT = `أنت "نيكسا"، المساعد الذكي اللطيف لمتجرنا الإلكتروني.
+- رحّب بالعملاء بدفء وبلغتهم (العربية أو الإنجليزية).
+- أجب عن أسئلة المنتجات باختصار. استخدم الإيموجي باعتدال.
+- إذا لم تعرف الإجابة، اعرض تحويلهم لوكيل بشري.
+- اختم دائمًا بخطوة واضحة (أضف إلى السلة، اطلب اتصالًا، أو حدّد موعدًا).`;
 
 function AISettings() {
   const [provider, setProvider] = useState("openai");
@@ -58,8 +58,8 @@ function AISettings() {
   const [handoff, setHandoff] = useState(true);
 
   function handleSave() {
-    toast.success("AI settings saved", {
-      description: `${provider} · ${model} · temp ${temperature[0]}`,
+    toast.success("تم حفظ إعدادات الذكاء الاصطناعي", {
+      description: `${provider} · ${model} · حرارة ${temperature[0]}`,
     });
   }
 
@@ -67,12 +67,12 @@ function AISettings() {
     <div>
       <PageHeader
         icon={<Bot className="h-5 w-5" />}
-        title="AI Auto-Responder"
-        description="Configure your LLM, persona, and automation rules."
+        title="الرد الآلي بالذكاء الاصطناعي"
+        description="اضبط نموذج اللغة، شخصية البوت، وقواعد الأتمتة."
         actions={
           <Button size="sm" onClick={handleSave} className="bg-gradient-primary shadow-elegant">
             <Save className="me-1.5 h-4 w-4" />
-            Save changes
+            حفظ التغييرات
           </Button>
         }
       />
@@ -84,16 +84,16 @@ function AISettings() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
                 <Key className="h-4 w-4 text-primary" />
-                LLM Provider & API key
+                مزوّد LLM ومفتاح API
               </CardTitle>
               <CardDescription>
-                Your key is stored encrypted and never sent to third parties.
+                مفتاحك مخزَّن مشفَّرًا ولن يُرسَل لأي طرف ثالث.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid gap-4 sm:grid-cols-2">
                 <div className="space-y-1.5">
-                  <Label>Provider</Label>
+                  <Label>المزوّد</Label>
                   <Select value={provider} onValueChange={setProvider}>
                     <SelectTrigger>
                       <SelectValue />
@@ -107,7 +107,7 @@ function AISettings() {
                   </Select>
                 </div>
                 <div className="space-y-1.5">
-                  <Label>Model</Label>
+                  <Label>النموذج</Label>
                   <Select value={model} onValueChange={setModel}>
                     <SelectTrigger>
                       <SelectValue />
@@ -122,7 +122,7 @@ function AISettings() {
                 </div>
               </div>
               <div className="space-y-1.5">
-                <Label>API key</Label>
+                <Label>مفتاح API</Label>
                 <div className="relative">
                   <Input
                     type={showKey ? "text" : "password"}
@@ -141,18 +141,18 @@ function AISettings() {
                 </div>
                 {apiKey && (
                   <Badge variant="secondary" className="mt-2 gap-1 text-success">
-                    <CheckCircle2 className="h-3 w-3" /> Key format looks valid
+                    <CheckCircle2 className="h-3 w-3" /> صيغة المفتاح تبدو صحيحة
                   </Badge>
                 )}
               </div>
               <div className="space-y-2">
                 <div className="flex items-center justify-between">
                   <Label className="text-sm">
-                    Temperature{" "}
+                    درجة الحرارة{" "}
                     <span className="font-mono text-muted-foreground">{temperature[0]}</span>
                   </Label>
                   <span className="text-[11px] text-muted-foreground">
-                    Lower = focused · Higher = creative
+                    أقل = أكثر تركيزًا · أعلى = أكثر إبداعًا
                   </span>
                 </div>
                 <Slider
@@ -170,10 +170,10 @@ function AISettings() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
                 <Sparkles className="h-4 w-4 text-primary" />
-                System Prompt — AI persona
+                موجِّه النظام — شخصية الذكاء الاصطناعي
               </CardTitle>
               <CardDescription>
-                Tell the AI exactly how to behave, tone, what to sell, and edge cases.
+                وضِّح للذكاء الاصطناعي كيف يتصرّف، نبرة الحديث، ما الذي يبيعه، والحالات الخاصة.
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-2">
@@ -184,8 +184,8 @@ function AISettings() {
                 className="resize-none font-mono text-xs leading-relaxed"
               />
               <div className="flex justify-between text-[11px] text-muted-foreground">
-                <span>{prompt.length} characters</span>
-                <span>Recommended: 200-1,500 chars</span>
+                <span>{prompt.length} حرفًا</span>
+                <span>الموصى به: 200-1,500 حرف</span>
               </div>
             </CardContent>
           </Card>
@@ -197,33 +197,33 @@ function AISettings() {
             <CardHeader>
               <CardTitle className="flex items-center gap-2 text-base">
                 <Zap className="h-4 w-4 text-primary" />
-                Automation toggles
+                مفاتيح الأتمتة
               </CardTitle>
-              <CardDescription>Control how aggressively the bot acts.</CardDescription>
+              <CardDescription>تحكَّم بمدى تلقائية ردود البوت.</CardDescription>
             </CardHeader>
             <CardContent className="space-y-1">
               <ToggleRow
-                label="Auto-Draft responses"
-                description="Generate replies for your agents to review and send."
+                label="صياغة الردود تلقائيًا"
+                description="ينشئ ردودًا لمراجعتها من الوكلاء قبل الإرسال."
                 checked={autoDraft}
                 onChange={setAutoDraft}
               />
               <ToggleRow
-                label="Direct auto-reply"
-                description="Send AI replies immediately, without human approval."
+                label="رد آلي مباشر"
+                description="إرسال ردود الذكاء الاصطناعي فورًا دون موافقة بشرية."
                 checked={autoReply}
                 onChange={setAutoReply}
                 accent
               />
               <ToggleRow
-                label="Automated follow-ups"
-                description="Re-engage stalled leads after 24h with a smart nudge."
+                label="متابعات تلقائية"
+                description="إعادة التواصل مع العملاء المتوقّفين بعد 24 ساعة برسالة ذكية."
                 checked={followUp}
                 onChange={setFollowUp}
               />
               <ToggleRow
-                label="Smart handoff to agent"
-                description="Detect frustration or complex queries and route to a human."
+                label="تحويل ذكي إلى وكيل"
+                description="كشف الانزعاج أو الأسئلة المعقّدة وتحويلها إلى وكيل بشري."
                 checked={handoff}
                 onChange={setHandoff}
               />
@@ -234,11 +234,11 @@ function AISettings() {
             <CardContent className="p-5">
               <div className="mb-2 flex items-center gap-2">
                 <Sparkles className="h-4 w-4 text-primary" />
-                <span className="text-sm font-semibold">Quality tip</span>
+                <span className="text-sm font-semibold">نصيحة للجودة</span>
               </div>
               <p className="text-xs leading-relaxed text-muted-foreground">
-                For Arabic-speaking customers, add 5-10 sample Q&A pairs in the prompt — it
-                improves dialect handling more than switching models.
+                للعملاء الناطقين بالعربية، أضف 5-10 أمثلة سؤال وجواب في الموجِّه — يحسّن
+                التعامل مع اللهجات أكثر من تغيير النموذج نفسه.
               </p>
             </CardContent>
           </Card>
@@ -264,7 +264,7 @@ function ToggleRow({ label, description, checked, onChange, accent }: ToggleRowP
           <span className="text-sm font-medium text-foreground">{label}</span>
           {accent && checked && (
             <Badge className="bg-warning/20 text-warning-foreground hover:bg-warning/20">
-              Live
+              مباشر
             </Badge>
           )}
         </div>

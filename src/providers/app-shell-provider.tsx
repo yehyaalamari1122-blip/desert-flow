@@ -16,7 +16,7 @@ const AppShellContext = createContext<AppShellContextValue | null>(null);
 
 export function AppShellProvider({ children }: { children: ReactNode }) {
   const [theme, setThemeState] = useState<Theme>("light");
-  const [dir, setDirState] = useState<Direction>("ltr");
+  const [dir, setDirState] = useState<Direction>("rtl");
 
   // Hydrate from localStorage / system preference
   useEffect(() => {
@@ -25,7 +25,7 @@ export function AppShellProvider({ children }: { children: ReactNode }) {
     const savedDir = (localStorage.getItem("nexa-dir") as Direction | null) ?? null;
     const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
     setThemeState(savedTheme ?? (prefersDark ? "dark" : "light"));
-    setDirState(savedDir ?? "ltr");
+    setDirState(savedDir ?? "rtl");
   }, []);
 
   // Apply theme class + dir attribute

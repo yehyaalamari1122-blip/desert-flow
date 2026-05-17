@@ -104,17 +104,17 @@ function CRM() {
 
   function handleDelete(id: string) {
     setContacts((cs) => cs.filter((c) => c.id !== id));
-    toast.success("Contact deleted");
+    toast.success("تم حذف جهة الاتصال");
   }
 
   function handleStatusChange(id: string, status: ContactStatus) {
     setContacts((cs) => cs.map((c) => (c.id === id ? { ...c, status } : c)));
-    toast.success(`Status updated to ${STATUS_META[status].label}`);
+    toast.success(`تم تحديث الحالة إلى ${STATUS_META[status].label}`);
   }
 
   function handleAdd() {
     if (!draft.name || !draft.phone) {
-      toast.error("Name and phone are required");
+      toast.error("الاسم ورقم الهاتف مطلوبان");
       return;
     }
     const id = `c${Date.now()}`;
@@ -128,49 +128,49 @@ function CRM() {
         status: "new",
         lastOrder: "—",
         totalSpent: 0,
-        lastSeen: "just now",
-        tags: ["New"],
+        lastSeen: "الآن",
+        tags: ["جديد"],
         history: [],
       },
       ...cs,
     ]);
     setAddOpen(false);
     setDraft({ name: "", phone: "", country: "" });
-    toast.success("Contact added");
+    toast.success("تمت إضافة جهة الاتصال");
   }
 
   return (
     <div>
       <PageHeader
         icon={<Users className="h-5 w-5" />}
-        title="CRM Contacts"
-        description="Manage WhatsApp leads, follow-ups, and customer pipeline."
+        title="جهات اتصال العملاء"
+        description="إدارة العملاء المحتملين والمتابعات وقمع المبيعات عبر واتساب."
         actions={
           <Dialog open={addOpen} onOpenChange={setAddOpen}>
             <DialogTrigger asChild>
               <Button size="sm" className="bg-gradient-primary shadow-elegant">
-                <Plus className="me-1.5 h-4 w-4" /> Add contact
+                <Plus className="me-1.5 h-4 w-4" /> إضافة جهة اتصال
               </Button>
             </DialogTrigger>
             <DialogContent>
               <DialogHeader>
-                <DialogTitle>New contact</DialogTitle>
+                <DialogTitle>جهة اتصال جديدة</DialogTitle>
                 <DialogDescription>
-                  Add a customer manually. New leads from WhatsApp are added automatically.
+                  أضف عميلًا يدويًا. العملاء الجدد من واتساب يُضافون تلقائيًا.
                 </DialogDescription>
               </DialogHeader>
               <div className="space-y-3 py-2">
                 <div className="space-y-1.5">
-                  <Label htmlFor="n">Full name</Label>
+                  <Label htmlFor="n">الاسم الكامل</Label>
                   <Input
                     id="n"
                     value={draft.name}
                     onChange={(e) => setDraft({ ...draft, name: e.target.value })}
-                    placeholder="Ahmed Hassan"
+                    placeholder="أحمد حسن"
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <Label htmlFor="p">WhatsApp number</Label>
+                  <Label htmlFor="p">رقم واتساب</Label>
                   <Input
                     id="p"
                     value={draft.phone}
@@ -179,21 +179,21 @@ function CRM() {
                   />
                 </div>
                 <div className="space-y-1.5">
-                  <Label htmlFor="c">Country</Label>
+                  <Label htmlFor="c">الدولة</Label>
                   <Input
                     id="c"
                     value={draft.country}
                     onChange={(e) => setDraft({ ...draft, country: e.target.value })}
-                    placeholder="Saudi Arabia"
+                    placeholder="السعودية"
                   />
                 </div>
               </div>
               <DialogFooter>
                 <Button variant="outline" onClick={() => setAddOpen(false)}>
-                  Cancel
+                  إلغاء
                 </Button>
                 <Button onClick={handleAdd} className="bg-gradient-primary">
-                  Create contact
+                  إنشاء جهة اتصال
                 </Button>
               </DialogFooter>
             </DialogContent>
@@ -209,7 +209,7 @@ function CRM() {
               <Input
                 value={query}
                 onChange={(e) => setQuery(e.target.value)}
-                placeholder="Search by name or phone…"
+                placeholder="ابحث بالاسم أو رقم الهاتف…"
                 className="h-10 ps-9"
               />
             </div>
@@ -219,7 +219,7 @@ function CRM() {
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
-                <SelectItem value="all">All statuses</SelectItem>
+                <SelectItem value="all">كل الحالات</SelectItem>
                 {Object.entries(STATUS_META).map(([k, m]) => (
                   <SelectItem key={k} value={k}>
                     {m.label}
@@ -228,7 +228,7 @@ function CRM() {
               </SelectContent>
             </Select>
             <Badge variant="secondary" className="h-10 px-3 text-xs">
-              {filtered.length} contacts
+              {filtered.length} جهة اتصال
             </Badge>
           </div>
         </Card>
@@ -237,11 +237,11 @@ function CRM() {
           <Table>
             <TableHeader>
               <TableRow className="bg-muted/40 hover:bg-muted/40">
-                <TableHead>Contact</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Last order</TableHead>
-                <TableHead className="text-end">Spent</TableHead>
-                <TableHead>Last seen</TableHead>
+                <TableHead>جهة الاتصال</TableHead>
+                <TableHead>الحالة</TableHead>
+                <TableHead>آخر طلب</TableHead>
+                <TableHead className="text-end">المبلغ</TableHead>
+                <TableHead>آخر ظهور</TableHead>
                 <TableHead className="w-12" />
               </TableRow>
             </TableHeader>
@@ -288,7 +288,7 @@ function CRM() {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem onClick={() => setSelected(c)}>
-                          <Pencil className="me-2 h-4 w-4" /> View / edit
+                          <Pencil className="me-2 h-4 w-4" /> عرض / تعديل
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         {Object.entries(STATUS_META).map(([k, m]) => (
@@ -296,7 +296,7 @@ function CRM() {
                             key={k}
                             onClick={() => handleStatusChange(c.id, k as ContactStatus)}
                           >
-                            Set status: {m.label}
+                            تعيين الحالة: {m.label}
                           </DropdownMenuItem>
                         ))}
                         <DropdownMenuSeparator />
@@ -304,7 +304,7 @@ function CRM() {
                           className="text-destructive focus:text-destructive"
                           onClick={() => handleDelete(c.id)}
                         >
-                          <Trash2 className="me-2 h-4 w-4" /> Delete
+                          <Trash2 className="me-2 h-4 w-4" /> حذف
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -314,7 +314,7 @@ function CRM() {
               {filtered.length === 0 && (
                 <TableRow>
                   <TableCell colSpan={6} className="py-12 text-center text-sm text-muted-foreground">
-                    No contacts match your filters.
+                    لا توجد جهات اتصال تطابق التصفية.
                   </TableCell>
                 </TableRow>
               )}
@@ -352,17 +352,17 @@ function CRM() {
                     <div className="text-lg font-bold text-foreground">
                       ${selected.totalSpent}
                     </div>
-                    <div className="text-[10px] uppercase text-muted-foreground">Spent</div>
+                    <div className="text-[10px] uppercase text-muted-foreground">المبلغ</div>
                   </div>
                   <div className="rounded-lg bg-muted/50 p-3 text-center">
                     <div className="text-lg font-bold text-foreground">
                       {selected.history.length}
                     </div>
-                    <div className="text-[10px] uppercase text-muted-foreground">Messages</div>
+                    <div className="text-[10px] uppercase text-muted-foreground">الرسائل</div>
                   </div>
                   <div className="rounded-lg bg-muted/50 p-3 text-center">
                     <StatusBadge status={selected.status} />
-                    <div className="mt-1 text-[10px] uppercase text-muted-foreground">Status</div>
+                    <div className="mt-1 text-[10px] uppercase text-muted-foreground">الحالة</div>
                   </div>
                 </div>
 
@@ -378,13 +378,13 @@ function CRM() {
                   <div className="mb-2 flex items-center justify-between">
                     <h4 className="flex items-center gap-1.5 text-sm font-semibold">
                       <MessageCircle className="h-4 w-4 text-primary" />
-                      Recent chat
+                      المحادثة الأخيرة
                     </h4>
                   </div>
                   <div className="space-y-2 rounded-xl border border-border bg-muted/30 p-3">
                     {selected.history.length === 0 && (
                       <p className="py-6 text-center text-xs text-muted-foreground">
-                        No messages yet.
+                        لا توجد رسائل بعد.
                       </p>
                     )}
                     {selected.history.map((m) => (
@@ -406,7 +406,7 @@ function CRM() {
                           )}
                         >
                           <p>{m.text}</p>
-                          <div className="mt-1 text-[9px] opacity-70">{m.time} · {m.from}</div>
+                          <div className="mt-1 text-[9px] opacity-70">{m.time} · {m.from === "customer" ? "العميل" : m.from === "bot" ? "البوت" : "الوكيل"}</div>
                         </div>
                       </div>
                     ))}
@@ -414,7 +414,7 @@ function CRM() {
                 </div>
 
                 <div className="flex items-center gap-2 border-t border-border pt-3">
-                  <Input placeholder="Type a reply…" className="h-10" />
+                  <Input placeholder="اكتب ردًا…" className="h-10" />
                   <Button size="icon" className="h-10 w-10 bg-gradient-primary">
                     <Send className="h-4 w-4" />
                   </Button>

@@ -60,22 +60,22 @@ function Invoices() {
   const [taxRate, setTaxRate] = useState(15);
 
   const [customer, setCustomer] = useState({
-    name: "Ahmed Hassan",
+    name: "أحمد حسن",
     phone: "+966 50 123 4567",
     email: "ahmed@example.com",
-    address: "King Fahd Rd, Riyadh, Saudi Arabia",
+    address: "طريق الملك فهد، الرياض، المملكة العربية السعودية",
   });
   const [seller, setSeller] = useState({
-    name: "Nexa Commerce LLC",
+    name: "نيكسا للتجارة ذ.م.م",
     phone: "+966 11 555 7700",
-    address: "Olaya District, Riyadh, KSA",
+    address: "حي العليا، الرياض، السعودية",
     vat: "300123456700003",
   });
-  const [notes, setNotes] = useState("Thank you for shopping with us! Payment due within 7 days.");
+  const [notes, setNotes] = useState("شكرًا لتسوّقك معنا! الدفع مستحق خلال 7 أيام.");
 
   const [items, setItems] = useState<LineItem[]>([
-    { id: "1", description: "Premium leather wallet — cognac", quantity: 1, price: 320 },
-    { id: "2", description: "Embossing service", quantity: 1, price: 80 },
+    { id: "1", description: "محفظة جلدية فاخرة — لون كونياك", quantity: 1, price: 320 },
+    { id: "2", description: "خدمة الحفر والنقش", quantity: 1, price: 80 },
   ]);
 
   const symbol = CURRENCIES.find((c) => c.code === currency)?.symbol ?? "$";
@@ -104,30 +104,30 @@ function Invoices() {
     window.print();
   }
   function handleSendWhatsApp() {
-    toast.success("Invoice sent via WhatsApp", {
+    toast.success("تم إرسال الفاتورة عبر واتساب", {
       description: `${number} → ${customer.name} (${customer.phone})`,
     });
   }
   function handleDownload() {
-    toast.success("Generating PDF…", { description: "Your download will start shortly." });
+    toast.success("جارٍ إنشاء PDF…", { description: "سيبدأ التنزيل خلال لحظات." });
   }
 
   return (
     <div>
       <PageHeader
         icon={<FileText className="h-5 w-5" />}
-        title="Invoices"
-        description="Create, preview, and send VAT-ready invoices to your WhatsApp customers."
+        title="الفواتير"
+        description="أنشئ وعاين وأرسل فواتير جاهزة للضريبة لعملائك عبر واتساب."
         actions={
           <>
             <Button size="sm" variant="outline" onClick={handlePrint}>
-              <Printer className="me-1.5 h-4 w-4" /> Print
+              <Printer className="me-1.5 h-4 w-4" /> طباعة
             </Button>
             <Button size="sm" variant="outline" onClick={handleDownload}>
               <Download className="me-1.5 h-4 w-4" /> PDF
             </Button>
             <Button size="sm" onClick={handleSendWhatsApp} className="bg-gradient-primary shadow-elegant">
-              <Send className="me-1.5 h-4 w-4" /> Send via WhatsApp
+              <Send className="me-1.5 h-4 w-4" /> إرسال عبر واتساب
             </Button>
           </>
         }
@@ -138,16 +138,16 @@ function Invoices() {
         <div className="space-y-6 print:hidden">
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Invoice details</CardTitle>
-              <CardDescription>Metadata and currency.</CardDescription>
+              <CardTitle className="text-base">تفاصيل الفاتورة</CardTitle>
+              <CardDescription>البيانات الوصفية والعملة.</CardDescription>
             </CardHeader>
             <CardContent className="grid gap-3 sm:grid-cols-2">
               <div className="space-y-1.5">
-                <Label>Invoice #</Label>
+                <Label>رقم الفاتورة</Label>
                 <Input value={number} readOnly className="font-mono" />
               </div>
               <div className="space-y-1.5">
-                <Label>Currency</Label>
+                <Label>العملة</Label>
                 <Select value={currency} onValueChange={setCurrency}>
                   <SelectTrigger>
                     <SelectValue />
@@ -162,15 +162,15 @@ function Invoices() {
                 </Select>
               </div>
               <div className="space-y-1.5">
-                <Label>Issue date</Label>
+                <Label>تاريخ الإصدار</Label>
                 <Input type="date" value={issueDate} onChange={(e) => setIssueDate(e.target.value)} />
               </div>
               <div className="space-y-1.5">
-                <Label>Due date</Label>
+                <Label>تاريخ الاستحقاق</Label>
                 <Input type="date" value={dueDate} onChange={(e) => setDueDate(e.target.value)} />
               </div>
               <div className="space-y-1.5 sm:col-span-2">
-                <Label>VAT / Tax rate (%)</Label>
+                <Label>نسبة ضريبة القيمة المضافة (%)</Label>
                 <Input
                   type="number"
                   value={taxRate}
@@ -182,23 +182,23 @@ function Invoices() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Bill to</CardTitle>
+              <CardTitle className="text-base">فاتورة إلى</CardTitle>
             </CardHeader>
             <CardContent className="grid gap-3 sm:grid-cols-2">
               <div className="space-y-1.5">
-                <Label>Customer name</Label>
+                <Label>اسم العميل</Label>
                 <Input value={customer.name} onChange={(e) => setCustomer({ ...customer, name: e.target.value })} />
               </div>
               <div className="space-y-1.5">
-                <Label>WhatsApp number</Label>
+                <Label>رقم واتساب</Label>
                 <Input value={customer.phone} onChange={(e) => setCustomer({ ...customer, phone: e.target.value })} />
               </div>
               <div className="space-y-1.5 sm:col-span-2">
-                <Label>Email</Label>
+                <Label>البريد الإلكتروني</Label>
                 <Input value={customer.email} onChange={(e) => setCustomer({ ...customer, email: e.target.value })} />
               </div>
               <div className="space-y-1.5 sm:col-span-2">
-                <Label>Billing address</Label>
+                <Label>عنوان الفوترة</Label>
                 <Textarea
                   rows={2}
                   value={customer.address}
@@ -210,9 +210,9 @@ function Invoices() {
 
           <Card>
             <CardHeader className="flex flex-row items-center justify-between">
-              <CardTitle className="text-base">Line items</CardTitle>
+              <CardTitle className="text-base">عناصر الفاتورة</CardTitle>
               <Button size="sm" variant="outline" onClick={addItem}>
-                <Plus className="me-1.5 h-4 w-4" /> Add item
+                <Plus className="me-1.5 h-4 w-4" /> إضافة عنصر
               </Button>
             </CardHeader>
             <CardContent className="space-y-2">
@@ -222,7 +222,7 @@ function Invoices() {
                   className="grid grid-cols-[1fr_70px_90px_36px] items-center gap-2 rounded-lg border border-border bg-muted/20 p-2"
                 >
                   <Input
-                    placeholder="Description"
+                    placeholder="الوصف"
                     value={it.description}
                     onChange={(e) => updateItem(it.id, { description: e.target.value })}
                     className="h-9 border-none bg-transparent shadow-none focus-visible:ring-1"
@@ -254,7 +254,7 @@ function Invoices() {
 
           <Card>
             <CardHeader>
-              <CardTitle className="text-base">Notes</CardTitle>
+              <CardTitle className="text-base">ملاحظات</CardTitle>
             </CardHeader>
             <CardContent>
               <Textarea rows={3} value={notes} onChange={(e) => setNotes(e.target.value)} />
@@ -268,13 +268,13 @@ function Invoices() {
             <div className="bg-gradient-primary p-6 text-primary-foreground">
               <div className="flex items-start justify-between">
                 <div>
-                  <div className="text-[11px] uppercase tracking-widest opacity-80">Invoice</div>
+                  <div className="text-[11px] uppercase tracking-widest opacity-80">فاتورة</div>
                   <div className="mt-1 font-mono text-2xl font-bold">{number}</div>
                 </div>
                 <div className="text-end">
                   <div className="text-sm font-semibold">{seller.name}</div>
                   <div className="text-[11px] opacity-90">{seller.address}</div>
-                  <div className="mt-1 text-[11px] opacity-90">VAT: {seller.vat}</div>
+                  <div className="mt-1 text-[11px] opacity-90">الرقم الضريبي: {seller.vat}</div>
                 </div>
               </div>
             </div>
@@ -283,7 +283,7 @@ function Invoices() {
               <div className="grid grid-cols-2 gap-4 text-xs">
                 <div>
                   <div className="mb-1 font-semibold uppercase tracking-wider text-slate-500">
-                    Bill to
+                    فاتورة إلى
                   </div>
                   <div className="font-semibold text-slate-900">{customer.name}</div>
                   <div className="text-slate-600">{customer.address}</div>
@@ -292,20 +292,20 @@ function Invoices() {
                 </div>
                 <div className="text-end">
                   <div className="mb-1 font-semibold uppercase tracking-wider text-slate-500">
-                    Dates
+                    التواريخ
                   </div>
-                  <div className="text-slate-700">Issued: {issueDate}</div>
-                  <div className="text-slate-700">Due: {dueDate}</div>
+                  <div className="text-slate-700">الإصدار: {issueDate}</div>
+                  <div className="text-slate-700">الاستحقاق: {dueDate}</div>
                 </div>
               </div>
 
               <table className="w-full text-sm">
                 <thead>
                   <tr className="border-b border-slate-200 text-[11px] uppercase tracking-wider text-slate-500">
-                    <th className="py-2 text-start font-semibold">Description</th>
-                    <th className="py-2 text-end font-semibold">Qty</th>
-                    <th className="py-2 text-end font-semibold">Price</th>
-                    <th className="py-2 text-end font-semibold">Total</th>
+                    <th className="py-2 text-start font-semibold">الوصف</th>
+                    <th className="py-2 text-end font-semibold">الكمية</th>
+                    <th className="py-2 text-end font-semibold">السعر</th>
+                    <th className="py-2 text-end font-semibold">الإجمالي</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -326,19 +326,19 @@ function Invoices() {
 
               <div className="ms-auto w-full max-w-xs space-y-1.5 text-sm">
                 <div className="flex justify-between text-slate-600">
-                  <span>Subtotal</span>
+                  <span>المجموع الفرعي</span>
                   <span className="font-mono">
                     {symbol} {totals.subtotal.toFixed(2)}
                   </span>
                 </div>
                 <div className="flex justify-between text-slate-600">
-                  <span>VAT ({taxRate}%)</span>
+                  <span>ضريبة القيمة المضافة ({taxRate}%)</span>
                   <span className="font-mono">
                     {symbol} {totals.tax.toFixed(2)}
                   </span>
                 </div>
                 <div className="mt-2 flex justify-between border-t-2 border-slate-900 pt-2 text-base font-bold text-slate-900">
-                  <span>Total due</span>
+                  <span>الإجمالي المستحق</span>
                   <span className="font-mono">
                     {symbol} {totals.grand.toFixed(2)}
                   </span>
@@ -348,16 +348,16 @@ function Invoices() {
               {notes && (
                 <div className="rounded-lg bg-slate-50 p-3 text-xs leading-relaxed text-slate-600">
                   <div className="mb-1 font-semibold uppercase tracking-wider text-slate-500">
-                    Notes
+                    ملاحظات
                   </div>
                   {notes}
                 </div>
               )}
 
               <div className="flex items-center justify-between border-t border-slate-200 pt-4 text-[11px] text-slate-500">
-                <span>Generated by Nexa · WhatsApp CRM</span>
+                <span>تم إنشاؤها بواسطة نيكسا · واتساب CRM</span>
                 <Badge variant="outline" className="gap-1 border-emerald-200 text-emerald-700">
-                  <MessageCircle className="h-3 w-3" /> Sent via WhatsApp
+                  <MessageCircle className="h-3 w-3" /> أُرسلت عبر واتساب
                 </Badge>
               </div>
             </CardContent>
