@@ -51,10 +51,10 @@ export function AppSidebar() {
           {!collapsed && (
             <div className="flex flex-col leading-none">
               <span className="text-base font-bold tracking-tight text-sidebar-foreground">
-                Nexa
+                نيكسا
               </span>
               <span className="text-[10px] font-medium uppercase tracking-wider text-muted-foreground">
-                WhatsApp CRM
+                واتساب CRM
               </span>
             </div>
           )}
