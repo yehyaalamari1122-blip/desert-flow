@@ -87,7 +87,7 @@ function KpiCard({ label, value, delta, icon, tint }: KpiProps) {
             {Math.abs(delta)}%
           </span>
         </div>
-        <p className="mt-1 text-[11px] text-muted-foreground">vs. last week</p>
+        <p className="mt-1 text-[11px] text-muted-foreground">مقارنةً بالأسبوع الماضي</p>
       </CardContent>
     </Card>
   );
@@ -98,15 +98,15 @@ function Analytics() {
     <div>
       <PageHeader
         icon={<LayoutDashboard className="h-5 w-5" />}
-        title="Dashboard"
-        description="Realtime overview of WhatsApp sales, AI replies, and pipeline health."
+        title="لوحة التحكم"
+        description="نظرة فورية على مبيعات واتساب وردود الذكاء الاصطناعي وصحّة قنوات البيع."
         actions={
           <>
             <Button variant="outline" size="sm">
-              Last 7 days
+              آخر 7 أيام
             </Button>
             <Button size="sm" className="bg-gradient-primary shadow-elegant">
-              Export report
+              تصدير التقرير
             </Button>
           </>
         }
@@ -115,28 +115,28 @@ function Analytics() {
       <div className="space-y-6 p-6">
         <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <KpiCard
-            label="Daily Revenue"
-            value="$6,420"
+            label="الإيرادات اليومية"
+            value="6,420 $"
             delta={12.4}
             tint="primary"
             icon={<DollarSign className="h-4 w-4 text-primary" />}
           />
           <KpiCard
-            label="Total Orders"
+            label="إجمالي الطلبات"
             value="184"
             delta={8.1}
             tint="info"
             icon={<ShoppingCart className="h-4 w-4 text-info" />}
           />
           <KpiCard
-            label="Active Bot Chats"
+            label="محادثات البوت النشطة"
             value="92"
             delta={24.6}
             tint="warning"
             icon={<MessageSquare className="h-4 w-4 text-warning" />}
           />
           <KpiCard
-            label="Conversion Rate"
+            label="معدّل التحويل"
             value="6.8%"
             delta={-1.2}
             tint="success"
