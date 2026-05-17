@@ -102,9 +102,9 @@ function Gateway() {
         {/* QR card */}
         <Card className="lg:col-span-2">
           <CardHeader>
-            <CardTitle className="text-base">Pair your phone</CardTitle>
+            <CardTitle className="text-base">اربط هاتفك</CardTitle>
             <CardDescription>
-              Open WhatsApp → Settings → Linked Devices → Link a device.
+              افتح واتساب ← الإعدادات ← الأجهزة المرتبطة ← ربط جهاز.
             </CardDescription>
           </CardHeader>
           <CardContent className="flex flex-col items-center gap-4">
