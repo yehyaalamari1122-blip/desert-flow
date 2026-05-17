@@ -288,7 +288,7 @@ function CRM() {
                       </DropdownMenuTrigger>
                       <DropdownMenuContent align="end">
                         <DropdownMenuItem onClick={() => setSelected(c)}>
-                          <Pencil className="me-2 h-4 w-4" /> View / edit
+                          <Pencil className="me-2 h-4 w-4" /> عرض / تعديل
                         </DropdownMenuItem>
                         <DropdownMenuSeparator />
                         {Object.entries(STATUS_META).map(([k, m]) => (
@@ -296,7 +296,7 @@ function CRM() {
                             key={k}
                             onClick={() => handleStatusChange(c.id, k as ContactStatus)}
                           >
-                            Set status: {m.label}
+                            تعيين الحالة: {m.label}
                           </DropdownMenuItem>
                         ))}
                         <DropdownMenuSeparator />
@@ -304,7 +304,7 @@ function CRM() {
                           className="text-destructive focus:text-destructive"
                           onClick={() => handleDelete(c.id)}
                         >
-                          <Trash2 className="me-2 h-4 w-4" /> Delete
+                          <Trash2 className="me-2 h-4 w-4" /> حذف
                         </DropdownMenuItem>
                       </DropdownMenuContent>
                     </DropdownMenu>
@@ -314,7 +314,7 @@ function CRM() {
               {filtered.length === 0 && (
                 <TableRow>
                   <TableCell colSpan={6} className="py-12 text-center text-sm text-muted-foreground">
-                    No contacts match your filters.
+                    لا توجد جهات اتصال تطابق التصفية.
                   </TableCell>
                 </TableRow>
               )}
