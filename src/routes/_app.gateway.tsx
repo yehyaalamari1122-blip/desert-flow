@@ -64,11 +64,11 @@ function Gateway() {
   useEffect(() => {
     if (state !== "connected") return;
     const events = [
-      "Inbound message from +971 55 ••• 6543",
-      "Bot auto-reply dispatched (latency 412ms)",
-      "Heartbeat OK · uptime 00:00:42",
-      "Inbound message from +20 100 ••• 7788",
-      "Bot drafted reply for human review",
+      "رسالة واردة من +971 55 ••• 6543",
+      "تم إرسال ردّ تلقائي من البوت (زمن الاستجابة 412 مللي ثانية)",
+      "نبضة سليمة · وقت التشغيل 00:00:42",
+      "رسالة واردة من +20 100 ••• 7788",
+      "صاغ البوت ردًا لمراجعة بشرية",
     ];
     let i = 0;
     const t = setInterval(() => {
@@ -82,17 +82,17 @@ function Gateway() {
     <div>
       <PageHeader
         icon={<QrCode className="h-5 w-5" />}
-        title="WhatsApp Gateway"
-        description="Connect your WhatsApp Business number via secure QR pairing."
+        title="بوابة واتساب"
+        description="اربط رقم واتساب الأعمال عبر إقران آمن برمز QR."
         actions={
           state === "connected" ? (
             <Button size="sm" variant="outline" onClick={handleDisconnect}>
-              <Power className="me-1.5 h-4 w-4" /> Disconnect
+              <Power className="me-1.5 h-4 w-4" /> قطع الاتصال
             </Button>
           ) : (
             <Badge variant="secondary" className="h-9 rounded-full px-3 text-xs">
               <span className="me-1.5 h-1.5 w-1.5 rounded-full bg-muted-foreground" />
-              Not connected
+              غير متصل
             </Badge>
           )
         }
