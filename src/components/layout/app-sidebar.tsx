@@ -36,7 +36,7 @@ export function AppSidebar() {
   const collapsed = state === "collapsed";
   const pathname = useRouterState({ select: (r) => r.location.pathname });
 
-  const isActive = (url: string) => (url === "/" ? pathname === "/" : pathname.startsWith(url));
+  const isActive = (url: string) => pathname.startsWith(url);
   const groups = Array.from(new Set(navItems.map((i) => i.group)));
 
   return (
