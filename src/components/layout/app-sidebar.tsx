@@ -24,7 +24,7 @@ import {
 import { cn } from "@/lib/utils";
 
 const navItems = [
-  { title: "لوحة التحكم", url: "/", icon: LayoutDashboard, group: "نظرة عامة" },
+  { title: "لوحة التحكم", url: "/dashboard", icon: LayoutDashboard, group: "نظرة عامة" },
   { title: "جهات اتصال العملاء", url: "/crm", icon: Users, group: "المبيعات" },
   { title: "الفواتير", url: "/invoices", icon: FileText, group: "المبيعات" },
   { title: "الرد الآلي بالذكاء الاصطناعي", url: "/ai-settings", icon: Bot, group: "الأتمتة" },
@@ -36,7 +36,7 @@ export function AppSidebar() {
   const collapsed = state === "collapsed";
   const pathname = useRouterState({ select: (r) => r.location.pathname });
 
-  const isActive = (url: string) => (url === "/" ? pathname === "/" : pathname.startsWith(url));
+  const isActive = (url: string) => pathname.startsWith(url);
   const groups = Array.from(new Set(navItems.map((i) => i.group)));
 
   return (
