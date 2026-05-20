@@ -11,9 +11,9 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as AppRouteImport } from './routes/_app'
-import { Route as AppIndexRouteImport } from './routes/_app.index'
 import { Route as AppInvoicesRouteImport } from './routes/_app.invoices'
 import { Route as AppGatewayRouteImport } from './routes/_app.gateway'
+import { Route as AppDashboardRouteImport } from './routes/_app.dashboard'
 import { Route as AppCrmRouteImport } from './routes/_app.crm'
 import { Route as AppAiSettingsRouteImport } from './routes/_app.ai-settings'
 
@@ -26,11 +26,6 @@ const AppRoute = AppRouteImport.update({
   id: '/_app',
   getParentRoute: () => rootRouteImport,
 } as any)
-const AppIndexRoute = AppIndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => AppRoute,
-} as any)
 const AppInvoicesRoute = AppInvoicesRouteImport.update({
   id: '/invoices',
   path: '/invoices',
@@ -39,6 +34,11 @@ const AppInvoicesRoute = AppInvoicesRouteImport.update({
 const AppGatewayRoute = AppGatewayRouteImport.update({
   id: '/gateway',
   path: '/gateway',
+  getParentRoute: () => AppRoute,
+} as any)
+const AppDashboardRoute = AppDashboardRouteImport.update({
+  id: '/dashboard',
+  path: '/dashboard',
   getParentRoute: () => AppRoute,
 } as any)
 const AppCrmRoute = AppCrmRouteImport.update({
@@ -53,20 +53,22 @@ const AppAiSettingsRoute = AppAiSettingsRouteImport.update({
 } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof AppIndexRoute
+  '/': typeof AppRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ai-settings': typeof AppAiSettingsRoute
   '/crm': typeof AppCrmRoute
+  '/dashboard': typeof AppDashboardRoute
   '/gateway': typeof AppGatewayRoute
   '/invoices': typeof AppInvoicesRoute
 }
 export interface FileRoutesByTo {
+  '/': typeof AppRouteWithChildren
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/ai-settings': typeof AppAiSettingsRoute
   '/crm': typeof AppCrmRoute
+  '/dashboard': typeof AppDashboardRoute
   '/gateway': typeof AppGatewayRoute
   '/invoices': typeof AppInvoicesRoute
-  '/': typeof AppIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -74,9 +76,9 @@ export interface FileRoutesById {
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/_app/ai-settings': typeof AppAiSettingsRoute
   '/_app/crm': typeof AppCrmRoute
+  '/_app/dashboard': typeof AppDashboardRoute
   '/_app/gateway': typeof AppGatewayRoute
   '/_app/invoices': typeof AppInvoicesRoute
-  '/_app/': typeof AppIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -85,19 +87,27 @@ export interface FileRouteTypes {
     | '/sitemap.xml'
     | '/ai-settings'
     | '/crm'
+    | '/dashboard'
     | '/gateway'
     | '/invoices'
   fileRoutesByTo: FileRoutesByTo
-  to: '/sitemap.xml' | '/ai-settings' | '/crm' | '/gateway' | '/invoices' | '/'
+  to:
+    | '/'
+    | '/sitemap.xml'
+    | '/ai-settings'
+    | '/crm'
+    | '/dashboard'
+    | '/gateway'
+    | '/invoices'
   id:
     | '__root__'
     | '/_app'
     | '/sitemap.xml'
     | '/_app/ai-settings'
     | '/_app/crm'
+    | '/_app/dashboard'
     | '/_app/gateway'
     | '/_app/invoices'
-    | '/_app/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -121,13 +131,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/_app/': {
-      id: '/_app/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof AppIndexRouteImport
-      parentRoute: typeof AppRoute
-    }
     '/_app/invoices': {
       id: '/_app/invoices'
       path: '/invoices'
@@ -140,6 +143,13 @@ declare module '@tanstack/react-router' {
       path: '/gateway'
       fullPath: '/gateway'
       preLoaderRoute: typeof AppGatewayRouteImport
+      parentRoute: typeof AppRoute
+    }
+    '/_app/dashboard': {
+      id: '/_app/dashboard'
+      path: '/dashboard'
+      fullPath: '/dashboard'
+      preLoaderRoute: typeof AppDashboardRouteImport
       parentRoute: typeof AppRoute
     }
     '/_app/crm': {
@@ -162,17 +172,17 @@ declare module '@tanstack/react-router' {
 interface AppRouteChildren {
   AppAiSettingsRoute: typeof AppAiSettingsRoute
   AppCrmRoute: typeof AppCrmRoute
+  AppDashboardRoute: typeof AppDashboardRoute
   AppGatewayRoute: typeof AppGatewayRoute
   AppInvoicesRoute: typeof AppInvoicesRoute
-  AppIndexRoute: typeof AppIndexRoute
 }
 
 const AppRouteChildren: AppRouteChildren = {
   AppAiSettingsRoute: AppAiSettingsRoute,
   AppCrmRoute: AppCrmRoute,
+  AppDashboardRoute: AppDashboardRoute,
   AppGatewayRoute: AppGatewayRoute,
   AppInvoicesRoute: AppInvoicesRoute,
-  AppIndexRoute: AppIndexRoute,
 }
 
 const AppRouteWithChildren = AppRoute._addFileChildren(AppRouteChildren)
