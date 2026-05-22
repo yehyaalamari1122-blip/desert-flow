@@ -178,13 +178,13 @@ function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button size="lg" asChild className="bg-gradient-primary shadow-elegant hover:opacity-95">
+            <Button size="lg" asChild className="btn-shine bg-gradient-primary shadow-elegant transition-transform hover:scale-[1.02] hover:opacity-95">
               <Link to="/dashboard">
                 ابدأ تجربتك المجانية
                 <ArrowLeft className="h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button size="lg" variant="outline" asChild className="border-border/80 backdrop-blur transition-colors hover:bg-accent/50">
               <a href="#preview">شاهد العرض التوضيحي</a>
             </Button>
           </div>
