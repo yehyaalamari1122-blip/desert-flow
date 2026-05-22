@@ -18,9 +18,19 @@ import {
   Globe,
   Menu,
   X,
+  Twitter,
+  Linkedin,
+  Github,
+  Instagram,
+  TrendingUp,
+  Clock,
+  Award,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { BrandLogo } from "@/components/shared/brand-logo";
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
