@@ -270,4 +270,17 @@
     50% { transform: translateY(-14px) translateX(6px); }
   }
   .animate-float { animation: float-slow 8s ease-in-out infinite; }
+
+  /* Premium button shine on hover */
+  .btn-shine { position: relative; overflow: hidden; isolation: isolate; }
+  .btn-shine::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(120deg, transparent 30%, color-mix(in oklab, white 35%, transparent) 50%, transparent 70%);
+    transform: translateX(-120%);
+    transition: transform 0.7s ease;
+    pointer-events: none;
+  }
+  .btn-shine:hover::after { transform: translateX(120%); }
 }

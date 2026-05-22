@@ -18,9 +18,19 @@ import {
   Globe,
   Menu,
   X,
+  Twitter,
+  Linkedin,
+  Github,
+  Instagram,
+  TrendingUp,
+  Clock,
+  Award,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { BrandLogo } from "@/components/shared/brand-logo";
+import { toast } from "sonner";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/")({
@@ -49,6 +59,7 @@ function LandingPage() {
     <div dir="rtl" className="min-h-screen bg-background text-foreground antialiased">
       <Navbar />
       <Hero />
+      <Stats />
       <LogosStrip />
       <Features />
       <DashboardPreview />
@@ -73,12 +84,8 @@ function Navbar() {
   return (
     <header className="sticky top-0 z-50 border-b border-border/60 glass">
       <div className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-4 px-4 md:px-6">
-        <Link to="/" className="flex items-center gap-2.5">
-          <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-primary shadow-glow">
-            <MessageCircle className="h-[18px] w-[18px] text-primary-foreground" strokeWidth={2.5} />
-            <Sparkles className="absolute -right-0.5 -top-0.5 h-3 w-3 text-warning" />
-          </div>
-          <span className="text-[15px] font-bold tracking-tight">Nexa</span>
+        <Link to="/" aria-label="Nexa">
+          <BrandLogo size="sm" />
         </Link>
 
         <nav className="hidden items-center gap-1 md:flex">
@@ -97,7 +104,7 @@ function Navbar() {
           <Button variant="ghost" size="sm" asChild>
             <Link to="/dashboard">تسجيل الدخول</Link>
           </Button>
-          <Button size="sm" asChild className="bg-gradient-primary shadow-elegant hover:opacity-95">
+          <Button size="sm" asChild className="btn-shine bg-gradient-primary shadow-elegant transition-transform hover:scale-[1.02] hover:opacity-95">
             <Link to="/dashboard">
               ابدأ مجاناً
               <ArrowLeft className="h-3.5 w-3.5" />
@@ -171,13 +178,13 @@ function Hero() {
           </p>
 
           <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <Button size="lg" asChild className="bg-gradient-primary shadow-elegant hover:opacity-95">
+            <Button size="lg" asChild className="btn-shine bg-gradient-primary shadow-elegant transition-transform hover:scale-[1.02] hover:opacity-95">
               <Link to="/dashboard">
                 ابدأ تجربتك المجانية
                 <ArrowLeft className="h-4 w-4" />
               </Link>
             </Button>
-            <Button size="lg" variant="outline" asChild>
+            <Button size="lg" variant="outline" asChild className="border-border/80 backdrop-blur transition-colors hover:bg-accent/50">
               <a href="#preview">شاهد العرض التوضيحي</a>
             </Button>
           </div>
@@ -295,6 +302,40 @@ function MockDashboard() {
         </div>
       </div>
     </div>
+  );
+}
+
+/* ───────────────────── Stats / Trust ───────────────────── */
+function Stats() {
+  const stats = [
+    { icon: TrendingUp, value: "+٢٬٠٠٠", label: "متجر نشط" },
+    { icon: MessageCircle, value: "١٢ مليون", label: "رسالة معالَجة" },
+    { icon: Award, value: "٤٫٩/٥", label: "تقييم العملاء" },
+    { icon: Clock, value: "٩٩٫٩٪", label: "وقت تشغيل مضمون" },
+  ];
+  return (
+    <section className="border-y border-border/60 bg-card/30 py-10">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 md:grid-cols-4 md:gap-4 md:px-6">
+        {stats.map((s, i) => (
+          <motion.div
+            key={s.label}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: i * 0.06 }}
+            className="flex items-center gap-3 md:justify-center"
+          >
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/50 text-primary">
+              <s.icon className="h-4 w-4" />
+            </div>
+            <div>
+              <div className="text-lg font-bold tracking-tight leading-none">{s.value}</div>
+              <div className="mt-1 text-[11.5px] text-muted-foreground">{s.label}</div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
   );
 }
 
@@ -724,60 +765,129 @@ function CTA() {
 
 /* ───────────────────── Footer ───────────────────── */
 function Footer() {
-  const cols = [
+  const cols: { title: string; links: { label: string; to?: string; href?: string }[] }[] = [
     {
       title: "المنتج",
-      links: ["المميزات", "الأسعار", "لوحة التحكم", "التكاملات", "API"],
+      links: [
+        { label: "المميزات", href: "#features" },
+        { label: "الأسعار", href: "#pricing" },
+        { label: "لوحة التحكم", to: "/dashboard" },
+        { label: "التكاملات", href: "#features" },
+        { label: "الأسئلة الشائعة", href: "#faq" },
+      ],
     },
     {
       title: "الشركة",
-      links: ["من نحن", "المدونة", "الوظائف", "تواصل معنا"],
+      links: [
+        { label: "من نحن", to: "/contact" },
+        { label: "تواصل معنا", to: "/contact" },
+        { label: "المدونة", href: "#" },
+        { label: "الوظائف", href: "#" },
+      ],
     },
     {
       title: "قانوني",
-      links: ["شروط الاستخدام", "سياسة الخصوصية", "ملفات تعريف الارتباط"],
+      links: [
+        { label: "سياسة الخصوصية", to: "/privacy" },
+        { label: "شروط الاستخدام", to: "/terms" },
+        { label: "ملفات تعريف الارتباط", to: "/privacy" },
+      ],
     },
   ];
+
+  const socials = [
+    { icon: Twitter, href: "#", label: "Twitter" },
+    { icon: Linkedin, href: "#", label: "LinkedIn" },
+    { icon: Instagram, href: "#", label: "Instagram" },
+    { icon: Github, href: "#", label: "GitHub" },
+  ];
+
   return (
-    <footer className="border-t border-border/60 bg-muted/30 py-14">
+    <footer className="relative overflow-hidden border-t border-border/60 bg-muted/30 pt-16 pb-8">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-primary/40 to-transparent" />
       <div className="mx-auto max-w-7xl px-4 md:px-6">
-        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+        <div className="grid gap-12 md:grid-cols-[1.5fr_1fr_1fr_1fr]">
           <div>
-            <div className="flex items-center gap-2.5">
-              <div className="relative flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-primary shadow-glow">
-                <MessageCircle className="h-[18px] w-[18px] text-primary-foreground" strokeWidth={2.5} />
-                <Sparkles className="absolute -right-0.5 -top-0.5 h-3 w-3 text-warning" />
-              </div>
-              <span className="text-[15px] font-bold tracking-tight">Nexa</span>
-            </div>
-            <p className="mt-4 max-w-xs text-[13px] leading-relaxed text-muted-foreground">
+            <BrandLogo size="md" />
+            <p className="mt-5 max-w-xs text-[13px] leading-relaxed text-muted-foreground">
               منصة واتساب ذكية لإدارة محادثات العملاء، أتمتة المبيعات، وتنمية متجرك بثقة.
             </p>
-            <div className="mt-4 inline-flex items-center gap-2 rounded-full border border-border/70 bg-background/70 px-3 py-1 text-[11.5px] text-muted-foreground">
-              <Globe className="h-3 w-3" /> العربية · English coming soon
+
+            <form
+              onSubmit={(e) => {
+                e.preventDefault();
+                toast.success("تم اشتراكك في النشرة البريدية.");
+                (e.target as HTMLFormElement).reset();
+              }}
+              className="mt-6 flex max-w-sm gap-2"
+            >
+              <Input
+                type="email"
+                required
+                placeholder="بريدك الإلكتروني"
+                className="h-9 rounded-full bg-background/70 text-[13px]"
+              />
+              <Button
+                type="submit"
+                size="sm"
+                className="btn-shine h-9 rounded-full bg-gradient-primary px-4 shadow-elegant hover:opacity-95"
+              >
+                اشترك
+              </Button>
+            </form>
+
+            <div className="mt-5 flex items-center gap-2">
+              {socials.map((s) => (
+                <a
+                  key={s.label}
+                  href={s.href}
+                  aria-label={s.label}
+                  className="flex h-9 w-9 items-center justify-center rounded-full border border-border/70 bg-background/70 text-muted-foreground transition-all hover:-translate-y-0.5 hover:border-primary/40 hover:text-primary"
+                >
+                  <s.icon className="h-3.5 w-3.5" />
+                </a>
+              ))}
             </div>
           </div>
+
           {cols.map((c) => (
             <div key={c.title}>
-              <h4 className="text-[12.5px] font-semibold tracking-tight">{c.title}</h4>
+              <h4 className="text-[12.5px] font-semibold tracking-tight text-foreground/90">{c.title}</h4>
               <ul className="mt-4 space-y-2.5">
                 {c.links.map((l) => (
-                  <li key={l}>
-                    <a
-                      href="#"
-                      className="text-[13px] text-muted-foreground transition-colors hover:text-foreground"
-                    >
-                      {l}
-                    </a>
+                  <li key={l.label}>
+                    {l.to ? (
+                      <Link
+                        to={l.to}
+                        className="text-[13px] text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        {l.label}
+                      </Link>
+                    ) : (
+                      <a
+                        href={l.href}
+                        className="text-[13px] text-muted-foreground transition-colors hover:text-foreground"
+                      >
+                        {l.label}
+                      </a>
+                    )}
                   </li>
                 ))}
               </ul>
             </div>
           ))}
         </div>
-        <div className="mt-10 flex flex-col items-center justify-between gap-3 border-t border-border/60 pt-6 text-[12px] text-muted-foreground md:flex-row">
+
+        <div className="mt-12 flex flex-col items-center justify-between gap-3 border-t border-border/60 pt-6 text-[12px] text-muted-foreground md:flex-row">
           <p>© ٢٠٢٦ Nexa. جميع الحقوق محفوظة.</p>
-          <p>صُنع بـ ❤️ للمتاجر العربية.</p>
+          <div className="flex items-center gap-4">
+            <span className="inline-flex items-center gap-1.5">
+              <Globe className="h-3 w-3" /> العربية · English قريباً
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <ShieldCheck className="h-3 w-3 text-primary" /> ‎SOC 2 · GDPR
+            </span>
+          </div>
         </div>
       </div>
     </footer>
