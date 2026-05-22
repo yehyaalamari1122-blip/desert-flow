@@ -104,7 +104,7 @@ function Navbar() {
           <Button variant="ghost" size="sm" asChild>
             <Link to="/dashboard">تسجيل الدخول</Link>
           </Button>
-          <Button size="sm" asChild className="bg-gradient-primary shadow-elegant hover:opacity-95">
+          <Button size="sm" asChild className="btn-shine bg-gradient-primary shadow-elegant transition-transform hover:scale-[1.02] hover:opacity-95">
             <Link to="/dashboard">
               ابدأ مجاناً
               <ArrowLeft className="h-3.5 w-3.5" />
