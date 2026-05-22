@@ -305,6 +305,40 @@ function MockDashboard() {
   );
 }
 
+/* ───────────────────── Stats / Trust ───────────────────── */
+function Stats() {
+  const stats = [
+    { icon: TrendingUp, value: "+٢٬٠٠٠", label: "متجر نشط" },
+    { icon: MessageCircle, value: "١٢ مليون", label: "رسالة معالَجة" },
+    { icon: Award, value: "٤٫٩/٥", label: "تقييم العملاء" },
+    { icon: Clock, value: "٩٩٫٩٪", label: "وقت تشغيل مضمون" },
+  ];
+  return (
+    <section className="border-y border-border/60 bg-card/30 py-10">
+      <div className="mx-auto grid max-w-7xl grid-cols-2 gap-6 px-4 md:grid-cols-4 md:gap-4 md:px-6">
+        {stats.map((s, i) => (
+          <motion.div
+            key={s.label}
+            initial={{ opacity: 0, y: 12 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.4, delay: i * 0.06 }}
+            className="flex items-center gap-3 md:justify-center"
+          >
+            <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-accent/50 text-primary">
+              <s.icon className="h-4 w-4" />
+            </div>
+            <div>
+              <div className="text-lg font-bold tracking-tight leading-none">{s.value}</div>
+              <div className="mt-1 text-[11.5px] text-muted-foreground">{s.label}</div>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </section>
+  );
+}
+
 /* ───────────────────── Logos ───────────────────── */
 function LogosStrip() {
   const logos = ["Shopify", "Salla", "Zid", "WooCommerce", "Stripe", "Tap"];
